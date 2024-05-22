@@ -18,8 +18,17 @@ public class GameMechanic
     public static int location = 0, part = 1;
     public static String[] locations = {"Demon Cult Barracks: West Wing", "West Jiang-Hu", "Huangshan Mountain", "Ten Thousand Mountains"};
     
-    // method to start the game
-    public static void startGame() 
+    public static void main(String[] args) {
+        showMainMenu();
+    }
+    
+    public static void showMainMenu() {
+        MainMenu menu = new MainMenu();
+        menu.setVisible(true);
+    }
+    
+    // method to start the game(will be in MainMenu class)
+    /*public static void startGame() 
     {
         // set to false to create a new name
         boolean setName = false;
@@ -90,7 +99,7 @@ public class GameMechanic
         //start main game loop
         gameLoop();
         
-    }
+    }*/
     
     //method to save the game
     public static void saveGame() 
@@ -342,19 +351,12 @@ public class GameMechanic
     // main game loop
     public static void gameLoop() 
     {
-        while(isRunning)
-        {
-            CUI.actionMenu();
-            int input = Print.userInput("-> ", 4);
-            if(input == 1) {
-                continueJourney();
-            } else if(input == 2) {
-                Player.characterInfo();
-            } else if(input == 3) {
-                saveGame();
-            } else if(input == 4) {
-                isRunning = false;
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                ActionMenu actionMenu = new ActionMenu();
+                actionMenu.setVisible(true);
             }
-        }
+        });
     }
 }
