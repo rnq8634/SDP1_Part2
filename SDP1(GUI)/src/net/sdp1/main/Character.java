@@ -17,6 +17,24 @@ public abstract class Character implements Serializable
         this.health = maxHealth;
     }
     
+    public void receiveDamage(int damage) 
+    {
+        this.health -= damage;
+        if (this.health < 0) {
+            this.health = 0;
+        }
+    }
+    
+    public int getHealth() 
+    {
+        return health;
+    }
+    
+    public int getMaxHealth() 
+    {
+        return maxHealth;
+    }
+    
     public String getName() 
     {
         return name;

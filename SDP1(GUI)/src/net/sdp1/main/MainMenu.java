@@ -87,6 +87,9 @@ public class MainMenu extends JFrame {
             
             GameMechanic.isRunning = true;
             GameMechanic.gameLoop();
+            
+            GameScreen gameScreen = new GameScreen();
+            gameScreen.setVisible(true);
         } else {
             GameMechanic.loadGame();
         }
