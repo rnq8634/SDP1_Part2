@@ -7,8 +7,6 @@ import java.io.Serializable;
 
 public class Player extends Character implements Serializable
 {
-    // health bar for player health
-    private transient HealthBarGui healthBar;
     
     //integers to store number of upgrades/skills in each path
     public int numMartialSkill, numMartialBody;
@@ -34,22 +32,8 @@ public class Player extends Character implements Serializable
         this.gold = 5;
         this.recoverRemaining = 1;
         this.elix = 0;
-        // health bar GUI
-        this.healthBar = new HealthBarGui(this);
         // let the player choose a trait when starting a first playthrough
         martialScroll();
-    }
-    
-    //method to show player health
-    public void displayHealthBar() 
-    {
-        this.healthBar.setVisible(true);
-    }
-    
-    public void receiveDamage(int damage) 
-    {
-        super.receiveDamage(damage);
-        this.healthBar.updateHealth();
     }
     
     private static final long serialVersionUID = 1L;

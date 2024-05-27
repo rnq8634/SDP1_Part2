@@ -1,7 +1,6 @@
 package net.sdp1.main;
 
 import java.io.*;
-import javax.swing.*;
 
 //GAME MECHANIC
 public class GameMechanic 
@@ -19,6 +18,80 @@ public class GameMechanic
     public static int location = 0, part = 1;
     public static String[] locations = {"Demon Cult Barracks: West Wing", "West Jiang-Hu", "Huangshan Mountain", "Ten Thousand Mountains"};
     
+    // method to start the game
+    public static void startGame() 
+    {
+        // set to false to create a new name
+        boolean setName = false;
+        String name;
+        // to check if loading is required
+        boolean loadGame = false;
+        
+        //check if a saved game exists
+        File savedData = new File("saveData_game.ser");
+        if(savedData.exists()) 
+        {
+            Print.emptySpace();
+            Print.separator(110);
+            //Print.center("RPG MURIM SIMULATION", 50);
+            System.out.println("____________ _____  ___  ____   _______ ________  ___  _____ ________  ____   _ _       ___ _____ ___________ ");
+            System.out.println("| ___ \\ ___ \\  __ \\ |  \\/  | | | | ___ \\_   _|  \\/  | /  ___|_   _|  \\/  | | | | |     / _ \\_   _|  _  | ___ \\");
+            System.out.println("| |_/ / |_/ / |  \\/ | .  . | | | | |_/ / | | | .  . | \\ `--.  | | | .  . | | | | |    / /_\\ \\| | | | | | |_/ /");
+            System.out.println("|    /|  __/| | __  | |\\/| | | | |    /  | | | |\\/| |  `--. \\ | | | |\\/| | | | | |    |  _  || | | | | |    /");
+            System.out.println("| |\\ \\| |   | |_\\ \\ | |  | | |_| | |\\ \\ _| |_| |  | | /\\__/ /_| |_| |  | | |_| | |____| | | || | \\ \\_/ / |\\ \\ ");
+            System.out.println("\\_| \\_\\_|    \\____/ \\_|  |_/\\___/\\_| \\_|\\___/\\_|  |_/ \\____/ \\___/\\_|  |_/\\___/\\_____/\\_| |_/\\_/  \\___/\\_| \\_|");
+            Print.separator(110);
+            System.out.println("[1] New Game \n[2] Load Game\n[3] Exit Game");
+            Print.separator(15);
+            int choice = Print.userInput("->", 3);
+            if(choice == 2) 
+            {
+                loadGame = true;
+            } else if(choice == 3) 
+            {
+                System.exit(0);
+            }
+        }
+        
+        if(!loadGame) 
+        {
+        //getting the player's name
+        do{
+            Print.emptySpace();
+            Print.heading("Warrior, what is your name?");
+            name = Print.scanner.next();
+            //asking the player if he wants to correct his choice
+            Print.emptySpace();
+            Print.heading("Your name is " + name + ".\nIs that correct?");
+            System.out.println("[1] Yes it's my name!");
+            System.out.println("[2] No, let me change it.");
+            int input = Print.userInput("-> ", 2);
+            if(input == 1)
+                setName = true;
+        }while(!setName);
+        
+        //print the story intro
+        Story.gameIntro();
+        
+        //create new player object with the player's chosen name
+        Player.player = new Player(name);
+        
+        //print the first story act intro
+        Story.storyPartOneStart();
+        
+        // setting isRunning 
+        isRunning = true;
+        } else 
+        {
+            // load the saved data
+            loadGame();
+        }
+        
+        //start main game loop
+        gameLoop();
+        
+    }
+    
     //method to save the game
     public static void saveGame() 
     {
@@ -30,11 +103,14 @@ public class GameMechanic
             out.writeInt(part);
             out.close();
             fileOut.close();
-            JOptionPane.showMessageDialog(null, "Progess has been saved!");
+            Print.emptySpace();
+            Print.heading("Progess has been saved!");
+            Print.enterOneToContinue();
         } catch(IOException e) 
         {
             Print.emptySpace();
-            JOptionPane.showMessageDialog(null, "Error saving game: " + e.getMessage());
+            Print.heading("Error saving game: " + e.getMessage());
+            Print.enterOneToContinue();
         }
     }
     
@@ -50,13 +126,18 @@ public class GameMechanic
             part = objectIn.readInt();
             objectIn.close();
             fileIn.close();
-            JOptionPane.showMessageDialog(null, "You have returned to your saved point!");
+            Print.emptySpace();
+            Print.separator(45);
+            System.out.println("You have returned to your saving point!");
+            System.out.println("Loaded Save: " + Player.player);
+            Print.separator(45);
             Print.enterOneToContinue();
             isRunning = true;
             gameLoop();
         } catch(IOException | ClassNotFoundException e) 
         {
-            JOptionPane.showMessageDialog(null, "Error loading game: " + e.getMessage());
+            Print.emptySpace();
+            System.out.println("Error loading game: " + e.getMessage());
             isRunning = false;
         }
     }
@@ -261,22 +342,19 @@ public class GameMechanic
     // main game loop
     public static void gameLoop() 
     {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                ActionMenu actionMenu = new ActionMenu();
-                actionMenu.setVisible(true);
+        while(isRunning)
+        {
+            CUI.actionMenu();
+            int input = Print.userInput("-> ", 4);
+            if(input == 1) {
+                continueJourney();
+            } else if(input == 2) {
+                Player.characterInfo();
+            } else if(input == 3) {
+                saveGame();
+            } else if(input == 4) {
+                isRunning = false;
             }
-        });
-    }
-    
-    //method for showing the menu
-    public static void showMainMenu() {
-        MainMenu menu = new MainMenu();
-        menu.setVisible(true);
-    }
-    
-    public static void main(String[] args) {
-        showMainMenu();
+        }
     }
 }
