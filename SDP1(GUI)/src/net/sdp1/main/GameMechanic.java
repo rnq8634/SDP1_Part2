@@ -19,7 +19,7 @@ public class GameMechanic
     public static String[] locations = {"Demon Cult Barracks: West Wing", "West Jiang-Hu", "Huangshan Mountain", "Ten Thousand Mountains"};
     
     // method to start the game
-    public static void startGame() 
+    /*public static void startGame() //(THIS WILL BE A BUTTON!)
     {
         // set to false to create a new name
         boolean setName = false;
@@ -83,8 +83,9 @@ public class GameMechanic
         gameLoop();
         
     }
+    */
     
-    //method to save the game
+    //method to save the game (THIS WILL BE A BUTTON!)
     public static void saveGame() 
     {
         try {
@@ -106,7 +107,7 @@ public class GameMechanic
         }
     }
     
-    // method to load game
+    // method to load game (THIS WILL BE A BUTTON!)
     public static void loadGame() 
     {
         try {
@@ -164,7 +165,7 @@ public class GameMechanic
         System.arraycopy(turns, 0, turns, 0, turns.length);
     }
     
-    //method to continue the journey
+    //method to continue the journey (THIS WILL BE A BUTTON!!!)
     public static void continueJourney() 
     {
         //check which part of the story the player is on
