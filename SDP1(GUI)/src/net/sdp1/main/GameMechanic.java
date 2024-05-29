@@ -33,14 +33,6 @@ public class GameMechanic
         {
             Print.emptySpace();
             Print.separator(110);
-            //Print.center("RPG MURIM SIMULATION", 50);
-            System.out.println("____________ _____  ___  ____   _______ ________  ___  _____ ________  ____   _ _       ___ _____ ___________ ");
-            System.out.println("| ___ \\ ___ \\  __ \\ |  \\/  | | | | ___ \\_   _|  \\/  | /  ___|_   _|  \\/  | | | | |     / _ \\_   _|  _  | ___ \\");
-            System.out.println("| |_/ / |_/ / |  \\/ | .  . | | | | |_/ / | | | .  . | \\ `--.  | | | .  . | | | | |    / /_\\ \\| | | | | | |_/ /");
-            System.out.println("|    /|  __/| | __  | |\\/| | | | |    /  | | | |\\/| |  `--. \\ | | | |\\/| | | | | |    |  _  || | | | | |    /");
-            System.out.println("| |\\ \\| |   | |_\\ \\ | |  | | |_| | |\\ \\ _| |_| |  | | /\\__/ /_| |_| |  | | |_| | |____| | | || | \\ \\_/ / |\\ \\ ");
-            System.out.println("\\_| \\_\\_|    \\____/ \\_|  |_/\\___/\\_| \\_|\\___/\\_|  |_/ \\____/ \\___/\\_|  |_/\\___/\\_____/\\_| |_/\\_/  \\___/\\_| \\_|");
-            Print.separator(110);
             System.out.println("[1] New Game \n[2] Load Game\n[3] Exit Game");
             Print.separator(15);
             int choice = Print.userInput("->", 3);
