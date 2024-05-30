@@ -17,257 +17,161 @@ import javax.swing.SwingUtilities;
 //GUI related stuff
 public class GameScreen {
     
-    JFrame screen;
-    //in game text panel
-    JPanel gameTextPanel, userInputPanel;
-    //title screen panel
-    JPanel titleNamePanel, newGameButtonPanel, loadGameButtonPanel, exitGameButtonPanel;
-    // action menu panel
-    JPanel actionMenuPanel;
+    private JFrame screen;
+    private JPanel gameTextPanel, userInputPanel, actionMenuPanel, playerPanel;
+    private JPanel titleNamePanel, newGameButtonPanel, loadGameButtonPanel, exitGameButtonPanel;
+    private JLabel titleNameLabel;
+    private JButton newGameButton, loadGameButton, exitGameButton, confirmButton;
+    private JButton action1, action2, action3, action4;
+    private JTextArea gameTextArea;
+    private JTextField nameField;
     
-    JTextField nameField;
-    
-    JLabel titleNameLabel;
-    //title settings
-    Font titleFont = new Font("Times New Roman", Font.PLAIN, 50);
-    Font gameFont = new Font("Times New Roman", Font.PLAIN, 20);
-    // button for starting the game
-    JButton newGameButton, loadGameButton, exitGameButton;
-    //choices
-    JButton action1, action2, action3, action4;
-    
-    JButton confirmButton;
-    JTextArea gameTextArea;
-    
-    titleHandler tHandler;
-    loadHandler lHandler;
-    nameHandler nHandler;
+    private final Font titleFont = new Font("Times New Roman", Font.PLAIN, 50);
+    private final Font gameFont = new Font("Times New Roman", Font.PLAIN, 20);
     
     public GameScreen() {
+        SwingUtilities.invokeLater(this::createAndShowApp);
+    }
+    
+    private void createAndShowApp() {
+        screen = new JFrame("Game");
+        screen.setSize(800, 600);
+        screen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        screen.getContentPane().setBackground(Color.BLACK);
+        screen.setLayout(null);
         
-        //initialize the handlers
-        tHandler = new titleHandler();
-        lHandler = new loadHandler();
-        nHandler = new nameHandler();
-        
-        // makes sure of the GUI creation on the event dispatch thread
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                titleScreen();
-            }
-        });
+        titleScreen();
+        screen.setVisible(true);
     }
     
     //where the title screen is displayed
     private void titleScreen() {
-        
-        screen = new JFrame();
-        //window size
-        screen.setTitle("Game");
-        screen.setSize(800, 600);
-        screen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //game background color
-        screen.getContentPane().setBackground(Color.BLACK);
-        //custom window
-        screen.setLayout(null);
-        
-        //title border, where the font is placed
-        titleNamePanel = new JPanel();
-        titleNamePanel.setBounds(100, 100, 600, 65);
-        titleNamePanel.setBackground(Color.BLACK);
-        
-        //title font, for editing the font color and text
-        titleNameLabel = new JLabel("RPG MURIM SIMULATOR");
-        titleNameLabel.setForeground(Color.WHITE);
-        titleNameLabel.setFont(titleFont);
+        titleNamePanel = createPanel(100, 100, 600, 65, Color.BLACK);
+        titleNameLabel = createLabel("RPG MURIM SIMULATOR", titleFont, Color.WHITE);
         titleNamePanel.add(titleNameLabel);
         
-        //new game button design
-        newGameButtonPanel = new JPanel();
-        newGameButtonPanel.setBounds(300, 400, 200, 31);
-        newGameButtonPanel.setBackground(Color.BLACK);
+        newGameButtonPanel = createButtonPanel(300, 400, "NEW GAME", e -> startGame());
+        loadGameButtonPanel = createButtonPanel(300, 428, "LOAD GAME", e -> GameMechanic.loadGame());
+        exitGameButtonPanel = createButtonPanel(300, 455, "EXIT GAME", e -> System.exit(0));
         
-        //new game button
-        newGameButton = new JButton("NEW GAME");
-        newGameButton.setBackground(Color.BLACK);
-        newGameButton.setForeground(Color.WHITE);
-        newGameButtonPanel.add(newGameButton);
-        
-        //function for new game
-        newGameButton.addActionListener(tHandler);
-        
-        //load button design
-        loadGameButtonPanel = new JPanel();
-        loadGameButtonPanel.setBounds(300, 428, 200, 31);
-        loadGameButtonPanel.setBackground(Color.BLACK);
-        
-        //load button
-        loadGameButton = new JButton("LOAD GAME");
-        loadGameButton.setBackground(Color.BLACK);
-        loadGameButton.setForeground(Color.WHITE);
-        loadGameButtonPanel.add(loadGameButton);
-        
-        //function for load game
-        loadGameButton.addActionListener(lHandler);
-        
-        //exit button design
-        exitGameButtonPanel = new JPanel();
-        exitGameButtonPanel.setBounds(300, 455, 200, 31);
-        exitGameButtonPanel.setBackground(Color.BLACK);
-        
-        //exit button
-        exitGameButton = new JButton("EXIT GAME");
-        exitGameButton.setBackground(Color.BLACK);
-        exitGameButton.setForeground(Color.WHITE);
-        exitGameButtonPanel.add(exitGameButton);
-        
-        //function for the exit button to close the game
-        exitGameButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
-        
-        //adds it to the screen/display(so you can see it)
         screen.add(titleNamePanel);
         screen.add(newGameButtonPanel);
         screen.add(loadGameButtonPanel);
         screen.add(exitGameButtonPanel);
-        // sets the application to be visible
-        screen.setVisible(true);
     }
     
-    //action for selecting Load Game at title screen
-    public class loadHandler implements ActionListener {
-        
-        public void actionPerformed(ActionEvent e) {
-            GameMechanic.loadGame();
-        }
-        
+    private JPanel createPanel(int x, int y, int width, int height, Color bgColor) {
+        JPanel panel = new JPanel();
+        panel.setBounds(x, y, width, height);
+        panel.setBackground(bgColor);
+        return panel;
     }
     
-    //action for selecting New Game at title screen
-    public class titleHandler implements ActionListener {
-        
-        public void actionPerformed(ActionEvent e) {
-            startGame();
-        }
+    private JLabel createLabel(String text, Font font, Color fgColor) {
+        JLabel label = new JLabel(text);
+        label.setFont(font);
+        label.setForeground(fgColor);
+        return label;
     }
     
+    private JPanel createButtonPanel(int x, int y, String buttonText, ActionListener action) {
+        JPanel panel = createPanel(x, y, 200, 31, Color.BLACK);
+        JButton button = createButton(buttonText, action);
+        panel.add(button);
+        return panel;
+    }
+    
+    private JButton createButton(String text, ActionListener action) {
+        JButton button = new JButton(text);
+        button.setBackground(Color.BLACK);
+        button.setForeground(Color.WHITE);
+        button.addActionListener(action);
+        return button;
+    }
+    
+    // clears screen just like the clear console method
+    private void clearScreen() {
+        screen.getContentPane().removeAll();
+        screen.revalidate();
+        screen.repaint();
+    }
+    
+    private JTextArea createTextArea(String text, Font font, Color fgColor) {
+        JTextArea textArea = new JTextArea(text);
+        textArea.setFont(font);
+        textArea.setBackground(Color.BLACK);
+        textArea.setForeground(fgColor);
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(true);
+        return textArea;
+    }
+    
+    // start of game(where user inputs name)
     public void startGame() {
-        
-        titleNamePanel.setVisible(false);
-        newGameButtonPanel.setVisible(false);
-        loadGameButtonPanel.setVisible(false);
-        exitGameButtonPanel.setVisible(false);
-        
-        //panel for user input
-        userInputPanel = new JPanel();
-        userInputPanel.setBounds(250, 250, 300, 58);
-        userInputPanel.setBackground(Color.BLACK);
-        screen.add(userInputPanel);
-        
-        //text field for user input
+        clearScreen();
+        userInputPanel = createPanel(250, 250, 300, 58, Color.BLACK);
         nameField = new JTextField(20);
         userInputPanel.add(nameField);
         
-        //game text design
-        gameTextPanel = new JPanel();
-        gameTextPanel.setBounds(100, 100, 600, 250);
-        gameTextPanel.setBackground(Color.BLACK);
-        screen.add(gameTextPanel);
-        
-        //game text
-        gameTextArea = new JTextArea("Warrior, what is your name?");
-        gameTextArea.setFont(gameFont);
-        gameTextArea.setBounds(100, 100, 600, 250);
-        //background
-        gameTextArea.setBackground(Color.BLACK);
-        //sets the text color
-        gameTextArea.setForeground(Color.WHITE);
-        //prevents long lines
-        gameTextArea.setLineWrap(true);
+        gameTextPanel = createPanel(100, 100, 600, 250, Color.BLACK);
+        gameTextArea = createTextArea("Warrrior, what is your name?", gameFont, Color.WHITE);
         gameTextPanel.add(gameTextArea);
         
-        confirmButton = new JButton("Confirm");
-        confirmButton.setBackground(Color.BLACK);
-        confirmButton.setForeground(Color.WHITE);
+        confirmButton = createButton("Confirm", e -> confirmName());
+        
         userInputPanel.add(confirmButton);
+        screen.add(userInputPanel);
+        screen.add(gameTextPanel);
         
-        confirmButton.addActionListener(nHandler);
-        
+        screen.revalidate();
+        screen.repaint();
     }
     
     //action for confirming player name
-    public class nameHandler implements ActionListener {
-        
-        public void actionPerformed(ActionEvent e) {
-            String name = nameField.getText();
-            
-            if (name.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "You didn't input a name!");
-            } else {
-                JOptionPane.showMessageDialog(null, "Your name is " + name + ".");
-                gameGUI();
-            }
+    public void confirmName() {
+        String name = nameField.getText().trim();
+        if (name.isEmpty()) {
+            JOptionPane.showMessageDialog(screen, "You didn't input a name!");
+        } else {
+            JOptionPane.showMessageDialog(screen, "Your name is " + name + ".");
+            gameGUI();
         }
-        
     }
     
     //where the gameplay will be displayed
     public void gameGUI() {
+        clearScreen();
         
-        //makes the previous screen disappear
-        gameTextPanel.setVisible(false);
-        confirmButton.setVisible(false);
-        gameTextArea.setVisible(false);
-        userInputPanel.setVisible(false);
-        
-        
-        //game text design
-        gameTextPanel = new JPanel();
-        gameTextPanel.setBounds(100, 100, 600, 250);
-        gameTextPanel.setBackground(Color.BLUE);
-        screen.add(gameTextPanel);
-        
-        //game text
-        gameTextArea = new JTextArea();
-        gameTextArea.setBounds(100, 100, 600, 250);
-        //background
-        gameTextArea.setBackground(Color.BLACK);
-        //sets the text color
-        gameTextArea.setForeground(Color.WHITE);
-        //prevents long lines
-        gameTextArea.setLineWrap(true);
+        gameTextPanel = createPanel(100, 100, 600, 250, Color.BLUE);
+        gameTextArea = createTextArea("", gameFont, Color.WHITE);
         gameTextPanel.add(gameTextArea);
         
-        //action menu area
-        actionMenuPanel = new JPanel();
-        actionMenuPanel.setBounds(250, 350, 300, 150);
-        actionMenuPanel.setBackground(Color.BLACK);
+        actionMenuPanel = createPanel(250, 350, 300, 150, Color.BLACK);
         actionMenuPanel.setLayout(new GridLayout(4, 1));
-        screen.add(actionMenuPanel);
         
-        //actions of the player/choices
-        action1 = new JButton("Action 1");
-        action1.setBackground(Color.BLACK);
-        action1.setForeground(Color.WHITE);
+        action1 = createButton("Action 1", e -> performAction(1));
+        action2 = createButton("Action 2", e -> performAction(2));
+        action3 = createButton("Action 3", e -> performAction(3));
+        action4 = createButton("Action 4", e -> performAction(4));
+        
         actionMenuPanel.add(action1);
-        
-        action2 = new JButton("Action 2");
-        action2.setBackground(Color.BLACK);
-        action2.setForeground(Color.WHITE);
         actionMenuPanel.add(action2);
-        
-        action3 = new JButton("Action 3");
-        action3.setBackground(Color.BLACK);
-        action3.setForeground(Color.WHITE);
         actionMenuPanel.add(action3);
-        
-        action4 = new JButton("Action 4");
-        action4.setBackground(Color.BLACK);
-        action4.setForeground(Color.WHITE);
         actionMenuPanel.add(action4);
+        
+        playerPanel = createPanel(100, 15, 600, 50, Color.BLUE);
+        playerPanel.setLayout(new GridLayout(1, 4));
+        
+        screen.add(gameTextPanel);
+        screen.add(actionMenuPanel);
+        screen.add(playerPanel);
+        
+        screen.revalidate();
+        screen.repaint();
+    }
+    
+    // method for button action/choices
+    private void performAction(int actionNumber) {
         
     }
     
