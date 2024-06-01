@@ -46,13 +46,15 @@ public class Player extends Character implements Serializable
         //martialScroll();
     }
     
-    public Player(String name, int maxHealth, int qi) {
+    public Player(String name, int maxHealth, int qi) 
+    {
         super(name, maxHealth, qi);
     }
     
     private static final long serialVersionUID = 1L;
     
-    public Player() {
+    public Player() 
+    {
         super("", 100, 0);
         this.numMartialSkill = 0;
         this.numMartialBody = 0;
@@ -62,55 +64,68 @@ public class Player extends Character implements Serializable
     }
     
     //getters and setters
-    public int getNumMartialSkill() {
+    public int getNumMartialSkill() 
+    {
         return numMartialSkill;
     }
     
-    public void setNumMartialSkill(int numMartialSkill) {
+    public void setNumMartialSkill(int numMartialSkill) 
+    {
         this.numMartialSkill = numMartialSkill;
     }
     
-    public int getNumMartialBody() {
+    public int getNumMartialBody() 
+    {
         return numMartialBody;
     }
     
-    public void setNumMartialBody(int numMartialBody) {
+    public void setNumMartialBody(int numMartialBody) 
+    {
         this.numMartialBody = numMartialBody;
     }
     
-    public int getGold() {
+    public int getGold() 
+    {
         return gold;
     }
     
-    public int getRecoverRemaining() {
+    public int getRecoverRemaining() 
+    {
         return recoverRemaining;
     }
     
-    public void setRecoverRemaining(int recoverRemaining) {
+    public void setRecoverRemaining(int recoverRemaining) 
+    {
         this.recoverRemaining = recoverRemaining;
     }
     
-    public int getElix() {
+    public int getElix() 
+    {
         return elix;
     }
     
-    public void setElix(int elix) {
+    public void setElix(int elix) 
+    {
         this.elix = elix;
     }
     
-    public String[] getMartialSkill() {
+    public String[] getMartialSkill() 
+    {
         return martialSkill;
     }
     
-    public String[] getMartialBody() {
+    public String[] getMartialBody() 
+    {
         return martialBody;
     }
     
-    public void setMartialSkill(String[] martialSkill) {
+    public void setMartialSkill(String[] martialSkill) 
+    {
         this.martialSkill = martialSkill;
     }
     
-    public void setMartialBody(String[] martialBody) {
+    public void setMartialBody(String[] martialBody) 
+    {
         this.martialBody = martialBody;
     }
     

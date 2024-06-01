@@ -17,15 +17,18 @@ public abstract class Character implements Serializable
         this.health = maxHealth;
     }
     
-    public int getQi() {
+    public int getQi() 
+    {
         return qi;
     }
     
-    public int getMaxHealth() {
+    public int getMaxHealth() 
+    {
         return maxHealth;
     }
     
-    public int getHealth() {
+    public int getHealth() 
+    {
         return health;
     }
     
