@@ -17,6 +17,18 @@ public abstract class Character implements Serializable
         this.health = maxHealth;
     }
     
+    public int getQi() {
+        return qi;
+    }
+    
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+    
+    public int getHealth() {
+        return health;
+    }
+    
     public String getName() 
     {
         return name;

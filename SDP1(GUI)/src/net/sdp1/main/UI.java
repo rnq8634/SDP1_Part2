@@ -3,7 +3,6 @@ package net.sdp1.main;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,25 +14,29 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 //GUI related stuff
-public class GameScreen {
+public class UI {
     
     private JFrame screen;
     private JPanel gameTextPanel, userInputPanel, actionMenuPanel, playerPanel;
     private JPanel titleNamePanel, newGameButtonPanel, loadGameButtonPanel, exitGameButtonPanel;
-    private JLabel titleNameLabel;
-    private JButton newGameButton, loadGameButton, exitGameButton, confirmButton;
+    private JLabel titleNameLabel, hpLabel, hpLabelNumber, martialLabel, martialBodyLabel, playerNameLabel;
+    private JButton confirmButton;
     private JButton action1, action2, action3, action4;
     private JTextArea gameTextArea;
     private JTextField nameField;
     
+    private Character character;
+    private Player player;
+    
     private final Font titleFont = new Font("Times New Roman", Font.PLAIN, 50);
     private final Font gameFont = new Font("Times New Roman", Font.PLAIN, 20);
     
-    public GameScreen() {
-        SwingUtilities.invokeLater(this::createAndShowApp);
+    public UI() {
+        SwingUtilities.invokeLater(this::createAndShowUI);
     }
     
-    private void createAndShowApp() {
+    
+    private void createAndShowUI() {
         screen = new JFrame("Game");
         screen.setSize(800, 600);
         screen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -60,6 +63,7 @@ public class GameScreen {
         screen.add(exitGameButtonPanel);
     }
     
+    // helper method
     private JPanel createPanel(int x, int y, int width, int height, Color bgColor) {
         JPanel panel = new JPanel();
         panel.setBounds(x, y, width, height);
@@ -67,6 +71,7 @@ public class GameScreen {
         return panel;
     }
     
+    // helper method
     private JLabel createLabel(String text, Font font, Color fgColor) {
         JLabel label = new JLabel(text);
         label.setFont(font);
@@ -74,6 +79,7 @@ public class GameScreen {
         return label;
     }
     
+    // helper method
     private JPanel createButtonPanel(int x, int y, String buttonText, ActionListener action) {
         JPanel panel = createPanel(x, y, 200, 31, Color.BLACK);
         JButton button = createButton(buttonText, action);
@@ -81,6 +87,7 @@ public class GameScreen {
         return panel;
     }
     
+    // helper method
     private JButton createButton(String text, ActionListener action) {
         JButton button = new JButton(text);
         button.setBackground(Color.BLACK);
@@ -89,20 +96,21 @@ public class GameScreen {
         return button;
     }
     
-    // clears screen just like the clear console method
+    // helper method
     private void clearScreen() {
         screen.getContentPane().removeAll();
         screen.revalidate();
         screen.repaint();
     }
     
-    private JTextArea createTextArea(String text, Font font, Color fgColor) {
+    // helper method
+    private JTextArea createTextArea(String text, Font font, Color fgColor, boolean lineWrap) {
         JTextArea textArea = new JTextArea(text);
         textArea.setFont(font);
         textArea.setBackground(Color.BLACK);
         textArea.setForeground(fgColor);
-        textArea.setLineWrap(true);
-        textArea.setWrapStyleWord(true);
+        textArea.setLineWrap(lineWrap);
+        textArea.setWrapStyleWord(lineWrap);
         return textArea;
     }
     
@@ -114,7 +122,8 @@ public class GameScreen {
         userInputPanel.add(nameField);
         
         gameTextPanel = createPanel(100, 100, 600, 250, Color.BLACK);
-        gameTextArea = createTextArea("Warrrior, what is your name?", gameFont, Color.WHITE);
+        gameTextArea = createTextArea("Warrrior, what is your name?", gameFont, Color.WHITE, false);
+        gameTextArea.setWrapStyleWord(true);
         gameTextPanel.add(gameTextArea);
         
         confirmButton = createButton("Confirm", e -> confirmName());
@@ -133,6 +142,7 @@ public class GameScreen {
         if (name.isEmpty()) {
             JOptionPane.showMessageDialog(screen, "You didn't input a name!");
         } else {
+            player = new Player(name);
             JOptionPane.showMessageDialog(screen, "Your name is " + name + ".");
             gameGUI();
         }
@@ -143,12 +153,13 @@ public class GameScreen {
         clearScreen();
         
         gameTextPanel = createPanel(100, 100, 600, 250, Color.BLUE);
-        gameTextArea = createTextArea("", gameFont, Color.WHITE);
+        gameTextArea = createTextArea("Hello World!", gameFont, Color.WHITE, true);
         gameTextPanel.add(gameTextArea);
         
         actionMenuPanel = createPanel(250, 350, 300, 150, Color.BLACK);
         actionMenuPanel.setLayout(new GridLayout(4, 1));
         
+        //  displays action
         action1 = createButton("Action 1", e -> performAction(1));
         action2 = createButton("Action 2", e -> performAction(2));
         action3 = createButton("Action 3", e -> performAction(3));
@@ -159,8 +170,35 @@ public class GameScreen {
         actionMenuPanel.add(action3);
         actionMenuPanel.add(action4);
         
+        //player stats hp and martial art
         playerPanel = createPanel(100, 15, 600, 50, Color.BLUE);
-        playerPanel.setLayout(new GridLayout(1, 4));
+        playerPanel.setLayout(new GridLayout(2, 2));
+        
+        //name display
+        playerNameLabel = createLabel("Name: " + player.getName(), gameFont, Color.WHITE);
+        playerPanel.add(playerNameLabel);
+        
+        //converts String[] to string
+        String martialBodyText = (player.getMartialBody() != null && player.getMartialBody().length > 0)
+                                ? player.getMartialBody()[0]
+                                : "None";
+        
+        //displayer for martial body
+        martialBodyLabel = createLabel("Martial Body: " + martialBodyText, gameFont, Color.WHITE);
+        playerPanel.add(martialBodyLabel);
+        
+        //health display
+        hpLabel = createLabel("HP: " + player.getHealth(), gameFont, Color.WHITE);
+        playerPanel.add(hpLabel);
+        
+        //converts String[] to string
+        String martialArtText = (player.getMartialSkill() != null && player.getMartialSkill().length > 0)
+                                ? player.getMartialSkill()[0]
+                                : "None";
+        
+        //martial art display
+        martialLabel = createLabel("Martial Art: " + martialArtText, gameFont, Color.WHITE);
+        playerPanel.add(martialLabel);
         
         screen.add(gameTextPanel);
         screen.add(actionMenuPanel);
@@ -168,6 +206,10 @@ public class GameScreen {
         
         screen.revalidate();
         screen.repaint();
+    }
+    
+    public void playerSetup() {
+        
     }
     
     // method for button action/choices

@@ -17,8 +17,18 @@ public class Player extends Character implements Serializable
     int gold, recoverRemaining, elix;
     
     //arrays to store skill names
-    public String[] martialSkill = {"Luminous Star Sword Technique", "Supreme Sky Demon Void Sword Art", "Extreme Art of the Blade God", "Sword Force of the Heavenly Demon"};
-    public String[] martialBody = {"Cool Blood Blockage", "Extreme Martial Body", "Heavenly Killing Star", "Heavenly Body"};
+    public String[] martialSkill = 
+    {
+        "Luminous Star Sword", 
+        "Supreme Sky Demon Void Sword Art", 
+        "Extreme Art of the Blade God", 
+        "Sword Force of the Heavenly Demon"};
+    public String[] martialBody = 
+    {
+        "Cool Blood Blockage", 
+        "Extreme Martial Body", 
+        "Heavenly Killing Star", 
+        "Heavenly Body"};
     
     //player specific constructor
     public Player(String name) 
@@ -33,7 +43,11 @@ public class Player extends Character implements Serializable
         this.recoverRemaining = 1;
         this.elix = 0;
         // let the player choose a trait when starting a first playthrough
-        martialScroll();
+        //martialScroll();
+    }
+    
+    public Player(String name, int maxHealth, int qi) {
+        super(name, maxHealth, qi);
     }
     
     private static final long serialVersionUID = 1L;
@@ -45,6 +59,59 @@ public class Player extends Character implements Serializable
         this.gold = 5;
         this.recoverRemaining = 1;
         this.elix = 0;
+    }
+    
+    //getters and setters
+    public int getNumMartialSkill() {
+        return numMartialSkill;
+    }
+    
+    public void setNumMartialSkill(int numMartialSkill) {
+        this.numMartialSkill = numMartialSkill;
+    }
+    
+    public int getNumMartialBody() {
+        return numMartialBody;
+    }
+    
+    public void setNumMartialBody(int numMartialBody) {
+        this.numMartialBody = numMartialBody;
+    }
+    
+    public int getGold() {
+        return gold;
+    }
+    
+    public int getRecoverRemaining() {
+        return recoverRemaining;
+    }
+    
+    public void setRecoverRemaining(int recoverRemaining) {
+        this.recoverRemaining = recoverRemaining;
+    }
+    
+    public int getElix() {
+        return elix;
+    }
+    
+    public void setElix(int elix) {
+        this.elix = elix;
+    }
+    
+    public String[] getMartialSkill() {
+        return martialSkill;
+    }
+    
+    public String[] getMartialBody() {
+        return martialBody;
+    }
+    
+    public void setMartialSkill(String[] martialSkill) {
+        this.martialSkill = martialSkill;
+    }
+    
+    public void setMartialBody(String[] martialBody) {
+        this.martialBody = martialBody;
     }
     
     //player specific method

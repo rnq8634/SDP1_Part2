@@ -8,7 +8,7 @@ public class MainGame
         //GameMechanic.startGame(); 
         
         //testing
-        new GameScreen();
+        new UI();
     }
     
 }
