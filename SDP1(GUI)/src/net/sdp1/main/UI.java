@@ -16,28 +16,33 @@ import javax.swing.SwingUtilities;
 //GUI related stuff
 public class UI 
 {
-    private JFrame screen;
-    private JPanel gameTextPanel, userInputPanel, actionMenuPanel, playerPanel, saveButtonPanel;
-    private JPanel titleNamePanel, newGameButtonPanel, loadGameButtonPanel, exitGameButtonPanel, menuButtonPanel;
-    private JLabel titleNameLabel, hpLabel, martialLabel, martialBodyLabel, playerNameLabel;
-    private JButton confirmButton, menuButton, saveButton;
-    private JButton action1, action2, action3, action4;
-    private JTextArea gameTextArea;
-    private JTextField nameField;
+    public JFrame screen;
+    public JPanel gameTextPanel, userInputPanel, actionMenuPanel, playerPanel, saveButtonPanel, playerWindowPanel;
+    public JPanel titleNamePanel, newGameButtonPanel, loadGameButtonPanel, exitGameButtonPanel, menuButtonPanel;
+    public JLabel titleNameLabel, hpLabel, martialLabel, martialBodyLabel, playerNameLabel;
+    public JButton confirmButton, menuButton, saveButton, playerWindowButton;
+    public JButton action1, action2, action3, action4;
+    public JTextArea gameTextArea;
+    public JTextField nameField;
     
+    //class reference
     private Character character;
-    private Player player;
+    public Player player;
+    private PlayerWindow playerWindow;
+    private UIManager uiManager;
     
-    private final Font titleFont = new Font("Times New Roman", Font.PLAIN, 50);
-    private final Font gameFont = new Font("Times New Roman", Font.PLAIN, 20);
+    public final Font titleFont = new Font("Times New Roman", Font.PLAIN, 50);
+    public final Font gameFont = new Font("Times New Roman", Font.PLAIN, 20);
     
     public UI() 
     {
         SwingUtilities.invokeLater(this::createAndShowUI);
+        playerWindow = new PlayerWindow(this);
+        uiManager = new UIManager(this);
     }
     
     
-    private void createAndShowUI() 
+    public void createAndShowUI() 
     {
         screen = new JFrame("Game");
         screen.setSize(800, 600);
@@ -50,7 +55,7 @@ public class UI
     }
     
     //where the title screen is displayed
-    private void titleScreen() 
+    public void titleScreen() 
     {
         clearScreen();
         
@@ -74,7 +79,7 @@ public class UI
     }
     
     // helper method
-    private JPanel createPanel(int x, int y, int width, int height, Color bgColor) 
+    public JPanel createPanel(int x, int y, int width, int height, Color bgColor) 
     {
         JPanel panel = new JPanel();
         panel.setBounds(x, y, width, height);
@@ -83,7 +88,7 @@ public class UI
     }
     
     // helper method
-    private JLabel createLabel(String text, Font font, Color fgColor) 
+    public JLabel createLabel(String text, Font font, Color fgColor) 
     {
         JLabel label = new JLabel(text);
         label.setFont(font);
@@ -92,7 +97,15 @@ public class UI
     }
     
     // helper method
-    private JPanel createButtonPanel(int x, int y, String buttonText, ActionListener action) 
+    public void clearScreen() 
+    {
+        screen.getContentPane().removeAll();
+        screen.revalidate();
+        screen.repaint();
+    }
+    
+    // helper method
+    public JPanel createButtonPanel(int x, int y, String buttonText, ActionListener action) 
     {
         JPanel panel = createPanel(x, y, 120, 31, Color.BLACK);
         JButton button = createButton(buttonText, action);
@@ -101,7 +114,7 @@ public class UI
     }
     
     // helper method
-    private JButton createButton(String text, ActionListener action) 
+    public JButton createButton(String text, ActionListener action) 
     {
         JButton button = new JButton(text);
         button.setBackground(Color.BLACK);
@@ -111,15 +124,7 @@ public class UI
     }
     
     // helper method
-    private void clearScreen() 
-    {
-        screen.getContentPane().removeAll();
-        screen.revalidate();
-        screen.repaint();
-    }
-    
-    // helper method
-    private JTextArea createTextArea(String text, Font font, Color fgColor, boolean lineWrap) 
+    public JTextArea createTextArea(String text, Font font, Color fgColor, boolean lineWrap) 
     {
         JTextArea textArea = new JTextArea(text);
         textArea.setFont(font);
@@ -206,7 +211,10 @@ public class UI
         menuButtonPanel = createPanel(325, 500, 150, 32, Color.BLACK);
         menuButtonPanel.add(menuButton);
         
-        //qi display
+        //player window button(whwre stats can be seen)
+        playerWindowButton = createButton("Player Window", e -> playerWindow.playerWindowUI());
+        playerWindowPanel = createPanel(100, 100, 100, 100, Color.YELLOW);
+        playerWindowPanel.add(playerWindowButton);
         
         //player panel, where player related stuff is displayed
         playerPanel = createPanel(100, 15, 600, 50, Color.BLACK);
@@ -238,6 +246,7 @@ public class UI
         martialLabel = createLabel("Martial Art: " + martialArtText, gameFont, Color.WHITE);
         playerPanel.add(martialLabel);
         
+        screen.add(playerWindowPanel);
         screen.add(gameTextPanel);
         screen.add(actionMenuPanel);
         screen.add(playerPanel);
@@ -249,7 +258,7 @@ public class UI
     }
     
     // method for button action/choices
-    private void performAction(int actionNumber) 
+    public void performAction(int actionNumber) 
     {
         
     }
