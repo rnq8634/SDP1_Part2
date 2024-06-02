@@ -2,6 +2,7 @@ package net.sdp1.main;
 
 import java.awt.Color;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class PlayerWindow {
@@ -11,7 +12,8 @@ public class PlayerWindow {
    private UIManager uiManager;
    
    private JButton backToGameButton;
-   private JPanel backToGameButtonPanel;
+   private JPanel backToGameButtonPanel, qiPanel, goldPanel, elixirPanel, characterInfoPanel, realmPanel, combatPowerPanel;
+   private JLabel qiLabel, goldLabel, elixirLabel, characterInfoLabel, realmLabel, combatPowerLabel;
     
     public PlayerWindow(UI ui) {
         this.ui = ui;
@@ -20,12 +22,20 @@ public class PlayerWindow {
     public void playerWindowUI() {
         ui.clearScreen();
         
+        //character info display(says character info)
+        
+        //player realm
+        
+        //player combat power display
+        
         //name display
         ui.playerNameLabel.setText("Name: " + ui.player.getName());
         ui.screen.add(ui.playerNameLabel);
         
         //qi display
-        // maybe gets bigger the higher the qi
+        qiPanel = ui.createPanel(0, 100, 120, 40, Color.BLACK);
+        qiLabel = ui.createLabel("Qi: " + ui.player.getQi(), ui.gameFont, Color.WHITE);
+        qiPanel.add(qiLabel);
         
         //martial skill display
          String martialArtText = (ui.player.getMartialSkill() != null && ui.player.getMartialSkill().length > 0)
@@ -42,16 +52,27 @@ public class PlayerWindow {
         ui.screen.add(ui.martialBodyLabel);
         
         //gold display
+        goldPanel = ui.createPanel(300, 100, 100, 40, Color.BLACK);
+        goldLabel = ui.createLabel("Gold: " + ui.player.getGold(), ui.gameFont, Color.WHITE);
+        goldPanel.add(goldLabel);
         
         //elixir display
+        elixirPanel = ui.createPanel(150, 100, 100, 40, Color.BLACK);
+        elixirLabel = ui.createLabel("Elixir: " + ui.player.getElix(), ui.gameFont, Color.WHITE);
+        elixirPanel.add(elixirLabel);
         
         // back to gameplay button
         backToGameButton = ui.createButton("Back to Game", e -> ui.gameGUI());
-        backToGameButtonPanel = ui.createPanel(325, 500, 150, 32, Color.YELLOW);
+        backToGameButtonPanel = ui.createPanel(325, 500, 130, 32, Color.BLACK);
         backToGameButtonPanel.add(backToGameButton);
         
+        //screen display
+        ui.screen.add(qiPanel);
         ui.screen.add(backToGameButtonPanel);
+        ui.screen.add(goldPanel);
+        ui.screen.add(elixirPanel);
         
+        //screen transition
         ui.screen.revalidate();
         ui.screen.repaint();
     }

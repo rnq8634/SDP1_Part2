@@ -26,10 +26,11 @@ public class UI
     public JTextField nameField;
     
     //class reference
-    private Character character;
+    public Character character;
     public Player player;
     private PlayerWindow playerWindow;
     private UIManager uiManager;
+    public GameMechanic gameMechanic;
     
     public final Font titleFont = new Font("Times New Roman", Font.PLAIN, 50);
     public final Font gameFont = new Font("Times New Roman", Font.PLAIN, 20);
@@ -39,9 +40,10 @@ public class UI
         SwingUtilities.invokeLater(this::createAndShowUI);
         playerWindow = new PlayerWindow(this);
         uiManager = new UIManager(this);
+        gameMechanic = new GameMechanic(this);
     }
     
-    
+    //creates the window
     public void createAndShowUI() 
     {
         screen = new JFrame("Game");
@@ -66,7 +68,7 @@ public class UI
         
         //buttons
         newGameButtonPanel = createButtonPanel(300, 400, "NEW GAME", e -> startGame());
-        loadGameButtonPanel = createButtonPanel(300, 428, "LOAD GAME", e -> GameMechanic.loadGame());
+        loadGameButtonPanel = createButtonPanel(300, 428, "LOAD GAME", e -> gameMechanic.loadGame());
         exitGameButtonPanel = createButtonPanel(300, 455, "EXIT GAME", e -> System.exit(0));
         
         screen.add(titleNamePanel);
@@ -184,6 +186,7 @@ public class UI
         //main text area
         gameTextPanel = createPanel(100, 100, 600, 250, Color.BLUE);
         gameTextArea = createTextArea("Hello World!", gameFont, Color.WHITE, true);
+        gameTextArea.setBounds(100, 100, 600, 250);
         gameTextPanel.add(gameTextArea);
         
         actionMenuPanel = createPanel(250, 350, 300, 150, Color.BLACK);
@@ -202,7 +205,7 @@ public class UI
         actionMenuPanel.add(action4);
         
         //save button
-        saveButton = createButton("Save Game", e -> GameMechanic.saveGame());
+        saveButton = createButton("Save Game", e -> gameMechanic.saveGame());
         saveButtonPanel = createPanel(570, 350, 100, 31, Color.BLACK);
         saveButtonPanel.add(saveButton);
         
@@ -213,7 +216,7 @@ public class UI
         
         //player window button(whwre stats can be seen)
         playerWindowButton = createButton("Player Window", e -> playerWindow.playerWindowUI());
-        playerWindowPanel = createPanel(100, 100, 100, 100, Color.YELLOW);
+        playerWindowPanel = createPanel(100, 350, 120, 31, Color.BLACK);
         playerWindowPanel.add(playerWindowButton);
         
         //player panel, where player related stuff is displayed
@@ -246,6 +249,7 @@ public class UI
         martialLabel = createLabel("Martial Art: " + martialArtText, gameFont, Color.WHITE);
         playerPanel.add(martialLabel);
         
+        //shows on the screen
         screen.add(playerWindowPanel);
         screen.add(gameTextPanel);
         screen.add(actionMenuPanel);
@@ -256,7 +260,7 @@ public class UI
         screen.revalidate();
         screen.repaint();
     }
-    
+   
     // method for button action/choices
     public void performAction(int actionNumber) 
     {
