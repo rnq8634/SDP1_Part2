@@ -47,85 +47,6 @@ public class Player extends Character implements Serializable
         //martialScroll();
     }
     
-    //getters and setters
-    public int getNumMartialSkill() 
-    {
-        return numMartialSkill;
-    }
-    
-    public void setNumMartialSkill(int numMartialSkill) 
-    {
-        this.numMartialSkill = numMartialSkill;
-    }
-    
-    public int getNumMartialBody() 
-    {
-        return numMartialBody;
-    }
-    
-    public void setNumMartialBody(int numMartialBody) 
-    {
-        this.numMartialBody = numMartialBody;
-    }
-    
-    public int getGold() 
-    {
-        return gold;
-    }
-    
-    public int getRecoverRemaining() 
-    {
-        return recoverRemaining;
-    }
-    
-    public void setRecoverRemaining(int recoverRemaining) 
-    {
-        this.recoverRemaining = recoverRemaining;
-    }
-    
-    public int getElix() 
-    {
-        return elix;
-    }
-    
-    public void setElix(int elix) 
-    {
-        this.elix = elix;
-    }
-    
-    public String[] getMartialSkill() 
-    {
-        return martialSkill;
-    }
-    
-    public String[] getMartialBody() 
-    {
-        return martialBody;
-    }
-    
-    public void setMartialSkill(String[] martialSkill) 
-    {
-        this.martialSkill = martialSkill;
-    }
-    
-    public void setMartialBody(String[] martialBody) 
-    {
-        this.martialBody = martialBody;
-    }
-    
-    //player specific method
-    @Override
-    public int attack() 
-    {
-        return (int) (Math.random() * (qi/4 + numMartialSkill * 3 + 3) + qi/10 + numMartialSkill * 2 + numMartialBody + 1);
-    }
-    
-    @Override
-    public int defend() 
-    {
-        return (int) (Math.random() * (qi/4 + numMartialBody * 3 + 3) + qi/10 + numMartialBody * 2 + numMartialSkill + 1);
-    }
-    
     //character stats
     // INFO
     public static void characterInfo() 
@@ -305,6 +226,85 @@ public class Player extends Character implements Serializable
             title = "Supreme Divinity";
         }
         System.out.println("[Realm] " + title);
+    }
+    
+    //getters and setters
+    public int getNumMartialSkill() 
+    {
+        return numMartialSkill;
+    }
+    
+    public void setNumMartialSkill(int numMartialSkill) 
+    {
+        this.numMartialSkill = numMartialSkill;
+    }
+    
+    public int getNumMartialBody() 
+    {
+        return numMartialBody;
+    }
+    
+    public void setNumMartialBody(int numMartialBody) 
+    {
+        this.numMartialBody = numMartialBody;
+    }
+    
+    public int getGold() 
+    {
+        return gold;
+    }
+    
+    public int getRecoverRemaining() 
+    {
+        return recoverRemaining;
+    }
+    
+    public void setRecoverRemaining(int recoverRemaining) 
+    {
+        this.recoverRemaining = recoverRemaining;
+    }
+    
+    public int getElix() 
+    {
+        return elix;
+    }
+    
+    public void setElix(int elix) 
+    {
+        this.elix = elix;
+    }
+    
+    public String[] getMartialSkill() 
+    {
+        return martialSkill;
+    }
+    
+    public String[] getMartialBody() 
+    {
+        return martialBody;
+    }
+    
+    public void setMartialSkill(String[] martialSkill) 
+    {
+        this.martialSkill = martialSkill;
+    }
+    
+    public void setMartialBody(String[] martialBody) 
+    {
+        this.martialBody = martialBody;
+    }
+    
+    //player specific method
+    @Override
+    public int attack() 
+    {
+        return (int) (Math.random() * (qi/4 + numMartialSkill * 3 + 3) + qi/10 + numMartialSkill * 2 + numMartialBody + 1);
+    }
+    
+    @Override
+    public int defend() 
+    {
+        return (int) (Math.random() * (qi/4 + numMartialBody * 3 + 3) + qi/10 + numMartialBody * 2 + numMartialSkill + 1);
     }
     
     //loading 
