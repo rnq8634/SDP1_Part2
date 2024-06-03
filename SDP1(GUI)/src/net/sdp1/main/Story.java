@@ -5,10 +5,9 @@ public class Story
     
     public static void gameIntro() 
     {
-        Print.emptySpace();
-        Print.separator(50);
+        
         Print.center("[STORY]", 50);
-        Print.separator(50);
+        
         System.out.println("You are a scout from the infamous Cult of Demons who");
         System.out.println("seek nothing but power. During your routine patrol,");
         System.out.println("You and your squad members unexpectedly  ran into the");
@@ -19,16 +18,14 @@ public class Story
         System.out.println("start over again. Given the chance to start over and");
         System.out.println("with the ability to get stronger faster than anyone else, you");
         System.out.println("vow to survive in order to rise top to the top of the Cult.");
-        Print.separator(50);
-        Print.enterOneToContinue();
+        
     }
     
     public static void storyPartOneStart() 
     {
-        Print.emptySpace();
-        Print.separator(50);
+        
         Print.center("PART - I - BEGINNING", 50);
-        Print.separator(50);
+        
         System.out.println("Waking up from the barracks, just days before your");
         System.out.println("scheduled routine patrol, the game prompt that you");
         System.out.println("thought was a dream couldn't be shaken away from your");
@@ -37,83 +34,74 @@ public class Story
         System.out.println("the ability to accumulate QI based on who you have killed.");
         System.out.println("This spurs you into action making sure you get stronger");
         System.out.println("before that fateful day....");
-        Print.separator(50);
-        Print.enterOneToContinue();
+        
     }
     
     public static void storyPartOneEnd() 
     {
-        Print.emptySpace();
-        Print.separator(50);
+        
         Print.center("PART - I - END", 50);
-        Print.separator(50);
+        
         System.out.println("You have gathered enough strength and QI in a couple");
         System.out.println("days, but it wasn't enough to face the monster from");
         System.out.println("the Mt. Hua Sect. But you can definitely feel yourself");
         System.out.println("getting stronger in such a short amount of time. You");
         System.out.println("are only about as strong as 5 Demon Footsoldiers, but ");
         System.out.println("you are still far from your goal...");
-        Print.separator(50);
-        Print.enterOneToContinue();
+        
     }
     
     public static void storyPartTwoStart() 
     {
-        Print.emptySpace();
-        Print.separator(50);
+        
         Print.center("PART - II - BEGINNING", 50);
-        Print.separator(50);
+        
         System.out.println("part 2 goes here");
-        Print.enterOneToContinue();
+        
     }
     
     public static void storyPartTwoEnd() 
     {
-        Print.emptySpace();
-        Print.separator(50);
+        
         Print.center("PART - II - END", 50);
-        Print.separator(50);
+        
         System.out.println("part 2 goes here");
-        Print.enterOneToContinue();
+        
     }
     
     public static void storyPartThreeStart() 
     {
-        Print.emptySpace();
-        Print.separator(50);
+        
         Print.center("PART - III - BEGINNING", 50);
-        Print.separator(50);
+        
         System.out.println("part 3 goes here");
-        Print.enterOneToContinue();
+        
     }
     
     public static void storyPartThreeEnd() 
     {
-        Print.emptySpace();
-        Print.separator(50);
+        
         Print.center("PART - III - END", 50);
-        Print.separator(50);
+        
         System.out.println("part 3 goes here");
-        Print.enterOneToContinue();
+        
     }
     
     public static void storyPartFourStart() 
     {
-        Print.emptySpace();
-        Print.separator(50);
+        
         Print.center("PART - IV", 50);
-        Print.separator(50);
+        
         System.out.println("part 4 goes here");
-        Print.enterOneToContinue();
+        
     }
     
     public static void gameEnd(Player player) 
     {
-        Print.emptySpace();
-        Print.separator(50);
+        
         Print.center("[GAME END]", 50);
         System.out.println("[Well done! " + player.name + "]");
         System.out.println("[You have reached the pinnacle of strength and rose to the top of the Clan!]");
-        Print.separator(50);
+        
     }
 }

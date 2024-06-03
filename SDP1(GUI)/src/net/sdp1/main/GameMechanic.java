@@ -28,79 +28,12 @@ public class GameMechanic
     public JPanel backToGameButtonPanel, saveGameTextPanel;
     public JTextArea saveGameTextArea;
     
-    // method to start the game
-    /*public static void startGame() //(THIS WILL BE A BUTTON!)
-    {
-        // set to false to create a new name
-        boolean setName = false;
-        String name;
-        // to check if loading is required
-        boolean loadGame = false;
-        
-        //check if a saved game exists
-        File savedData = new File("saveData_game.ser");
-        if(savedData.exists()) 
-        {
-            Print.emptySpace();
-            Print.separator(110);
-            System.out.println("[1] New Game \n[2] Load Game\n[3] Exit Game");
-            Print.separator(15);
-            int choice = Print.userInput("->", 3);
-            if(choice == 2) 
-            {
-                loadGame = true;
-            } else if(choice == 3) 
-            {
-                System.exit(0);
-            }
-        }
-        
-        if(!loadGame) 
-        {
-        //getting the player's name
-        do{
-            Print.emptySpace();
-            Print.heading("Warrior, what is your name?");
-            name = Print.scanner.next();
-            //asking the player if he wants to correct his choice
-            Print.emptySpace();
-            Print.heading("Your name is " + name + ".\nIs that correct?");
-            System.out.println("[1] Yes it's my name!");
-            System.out.println("[2] No, let me change it.");
-            int input = Print.userInput("-> ", 2);
-            if(input == 1)
-                setName = true;
-        }while(!setName);
-        
-        //print the story intro
-        Story.gameIntro();
-        
-        //create new player object with the player's chosen name
-        Player.player = new Player(name);
-        
-        //print the first story act intro
-        Story.storyPartOneStart();
-        
-        // setting isRunning 
-        isRunning = true;
-        } else 
-        {
-            // load the saved data
-            loadGame();
-        }
-        
-        //start main game loop
-        gameLoop();
-        
-    }
-    */
-    
     public GameMechanic(UI ui) 
     {
         this.ui = ui;
     }
     
-    //method to save the game (THIS WILL BE A BUTTON!)
+    //method to save the game
     public void saveGame() 
     {
         try 
@@ -120,7 +53,6 @@ public class GameMechanic
             saveGameTextPanel = ui.createPanel(100, 100, 600, 250, Color.BLACK);
             saveGameTextArea = ui.createTextArea("Game saved!", ui.gameFont, Color.WHITE, false);
             saveGameTextPanel.add(saveGameTextArea);
-            
             
             //button to go back to game
             backToGameButton = ui.createButton("Back to Game", e -> ui.gameGUI());
@@ -142,7 +74,6 @@ public class GameMechanic
             
             //text saying error
             JOptionPane.showMessageDialog(ui.screen, "Error saving game...");
-            
             
             //screen transition
             ui.screen.revalidate();
@@ -186,19 +117,24 @@ public class GameMechanic
         }
     }
     
-    public static void storyProgress() {
-        if(Player.player.qi >= 40 && part == 1) {
+    public static void storyProgress() 
+    {
+        if(Player.player.qi >= 40 && part == 1) 
+        {
             storyProgression(2, 1, Story::storyPartOneEnd, Story::storyPartTwoStart);
-        } else if(Player.player.qi >= 100 && part == 2) {
+        } else if(Player.player.qi >= 100 && part == 2) 
+        {
             storyProgression(3, 2, Story::storyPartTwoEnd, Story::storyPartThreeStart);
-        } else if(Player.player.qi >= 250 && part == 3) {
+        } else if(Player.player.qi >= 250 && part == 3) 
+        {
             storyProgression(4, 3, Story::storyPartThreeEnd, Story::storyPartFourStart);
             Boss.finalFight();
         }
     }
     
     //story progression, calls encounters and story starts and ends
-    private static void storyProgression(int newPart, int newLocation, Runnable storyPartEnd, Runnable storyPartStart) {
+    private static void storyProgression(int newPart, int newLocation, Runnable storyPartEnd, Runnable storyPartStart) 
+    {
         part = newPart;
         location = newLocation;
         storyPartEnd.run();
@@ -209,7 +145,8 @@ public class GameMechanic
     }
     
     //encounters in the story
-    private static void rngEncounters() {
+    private static void rngEncounters() 
+    {
         String[] enemies = new String[] {"Evil Mercenary", "Cultist", "Wandering Swordsman", "Demon Cultist", "Orthodox Sect Member"};
         String[] turns = new String[] {"Battle", "Battle", "Battle", "Recover", "Trader"};
         System.arraycopy(enemies, 0, enemies, 0, enemies.length);
@@ -233,11 +170,11 @@ public class GameMechanic
         // main battle loop
         while(true) 
         {
-            Print.emptySpace();
+            
             Print.heading(enemy.name + "\n[HEALTH] " + enemy.health + "/" + enemy.maxHealth);
             Print.heading(Player.player.name + "\n[HEALTH] " + Player.player.health + "/" + Player.player.maxHealth);
             Print.center("[ACTIONS]", 30);
-            Print.separator(30);
+            
             System.out.println("[1] Fight\n[2] Use an Elixir\n[3] Retreat");
             int input = Print.userInput("-> ", 3);
             //react to user input
@@ -259,17 +196,16 @@ public class GameMechanic
                 Player.player.health -= atkReceived;
                 enemy.health -= atk;
                 // print the info of the battle
-                Print.emptySpace();
-                Print.separator(40);
+                
                 Print.center("[RESULT]", 35);
                 //System.out.println("You dealt " + atk + " damage to " + enemy.name + ".");
-                Print.separator(40);
+                
                 if(atk > 0) {
                     System.out.println("You dealt " + atk + " damage to " + enemy.name + ".");
-                    Print.separator(40);
+                    
                 } else {
                     System.out.println(enemy.name + " has dodged your attack!");
-                    Print.separator(40);
+                    
                 }
                 if(atkReceived > 0) {
                     System.out.println(enemy.name + " dealt " + atkReceived + " damage to you.");
@@ -278,8 +214,7 @@ public class GameMechanic
                 }
                 
                 //System.out.println(enemy.name + " dealt " + atkReceived + " damage to you.");
-                Print.separator(40);
-                Print.enterOneToContinue();
+                
                 //check if the player is still alive
                 if(Player.player.health <= 0) 
                 {
@@ -288,18 +223,17 @@ public class GameMechanic
                 }else if(enemy.health <= 0) 
                 {
                     //to tell the player has won
-                    Print.emptySpace();
-                    Print.separator(50);
+                    
                     Print.center("[BATTLE RESULTS]", 38);
-                    Print.separator(50);
+                    
                     System.out.println("You killed " + enemy.name + " and harvested their QI!");
-                    Print.separator(50);
+                    
                     //random qi gained based on enemy qi(idea)
                     //int qiGained = (int) (Math.random() * (enemy.qi / 2) + 3);
                     //increase player qi
                     Player.player.qi += enemy.qi;
                     System.out.println("You accumulated " + enemy.qi + " QI!");
-                    Print.separator(50);
+                    
                     //enemy drops
                     boolean addRecover = (Math.random() * 5 + 1 <= 0.5);
                     int goldEarned = (int) (Math.random() * enemy.qi);
@@ -307,7 +241,7 @@ public class GameMechanic
                     {
                         Player.player.recoverRemaining++;
                         System.out.println("You earned another chance to recover!");
-                        Print.separator(50);
+                        
                     }
                     if(goldEarned > 0) 
                     {
@@ -315,43 +249,42 @@ public class GameMechanic
                         System.out.println("You looted " + goldEarned + "G from " + enemy.name + "'s corpse!");
                         Print.separator(50);
                     }
-                    Print.enterOneToContinue();
+                    
                     break;
                 }
             }else if(input == 2) 
             {
                 //USE ELIXIR
-                Print.emptySpace();
+                
                 if(Player.player.elix > 0 && Player.player.health < Player.player.maxHealth) 
                 {
                     //player CAN USE a elixir
                     Print.heading("[HEALTH] " + Player.player.health + "/" + Player.player.maxHealth);
                     System.out.println("[ELIXIR HELD] " + Player.player.elix);
                     System.out.println("Do you want to consume this elixir?");
-                    Print.separator(30);
+                    
                     System.out.println("[1] Yes, I'm in a pinch!\n[2] Not now.");
                     input = Print.userInput("-> ", 2);
                     if(input == 1) 
                     {
                         // if player uses elixir
                         Player.player.health = Player.player.maxHealth;
-                        Print.emptySpace();
-                        Print.separator(45);
+                        
                         System.out.println("You consumed an elixir.");
                         System.out.println("Health has been restored to " + Player.player.maxHealth);
-                        Print.separator(45);
+                        
                         Player.player.elix--;
-                        Print.enterOneToContinue();
+                        
                     }
                 }else 
                 {
                     //player doesnt have an elixir
                     Print.heading("You do not have any elixir!");
-                    Print.enterOneToContinue();
+                    
                 }
             }else{
                 //RUN AWAY
-                Print.emptySpace();
+                
                 //check that the player isnt in the last act so that they can't run awawy from boss
                 if(part != 4) 
                 {
@@ -359,7 +292,7 @@ public class GameMechanic
                     if(Math.random() * 10 + 1 <= 4.5) 
                     {
                         Print.heading("You have escaped from " + enemy.name + "!");
-                        Print.enterOneToContinue();
+                        
                         break;
                     }else
                     {
@@ -367,9 +300,9 @@ public class GameMechanic
                         //calculate the damage the player takes
                         int dmgReceived = enemy.attack();
                         System.out.println("You took " + dmgReceived + " damage while trying to flee!");
-                        Print.separator(30);
+                        
                         Player.player.health -= dmgReceived;
-                        Print.enterOneToContinue();
+                        
                         //check if the player is alive
                         if(Player.player.health <= 0) {
                             //Player.death();
@@ -378,7 +311,7 @@ public class GameMechanic
                 }else
                 {
                     Print.heading("Escape is futile...");
-                    Print.enterOneToContinue();
+                    
                 }
             }
         }

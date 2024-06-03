@@ -22,11 +22,9 @@ public class Random {
     //random battle method
     public static void enemyFight() 
     {
-        Print.emptySpace();
-        Print.separator(45);
+        
         System.out.println("[NOTIFICATION] Prepare for an encounter!!!");
-        Print.separator(45);
-        Print.enterOneToContinue();
+        
         // method for random enemy name
         GameMechanic.battleSystem(new Enemy(GameMechanic.enemies[(int)(Math.random() * GameMechanic.enemies.length)], Player.player.qi));
     }

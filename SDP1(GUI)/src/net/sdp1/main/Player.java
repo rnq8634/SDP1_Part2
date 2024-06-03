@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import static net.sdp1.main.GameMechanic.ui;
 
 public class Player extends Character implements Serializable
 {
@@ -36,7 +37,7 @@ public class Player extends Character implements Serializable
     public Player(String name) 
     {
         // calling constructor of superclass
-        super(name, 100, 100);
+        super(name, 100, 0);
         // setting of upgrades to 0
         this.numMartialSkill = 0;
         this.numMartialBody = 0;
@@ -209,17 +210,16 @@ public class Player extends Character implements Serializable
     //realms
     public String realm() 
     {
-        title = "";
-        if(player.qi < 30) 
+        if(ui.player.qi < 30) 
         {
             title = "Foundation Building";
-        } else if(player.qi < 75) 
+        } else if(ui.player.qi < 75) 
         {
             title = "Primordial Soul";
-        } else if(player.qi < 200) 
+        } else if(ui.player.qi < 200) 
         {
             title = "Unification Stage";
-        } else if(player.qi < 600) 
+        } else if(ui.player.qi < 600) 
         {
             title = "Supreme Divinity";
         }

@@ -28,10 +28,10 @@ public class PlayerWindow {
         characterInfoPanel.add(characterInfoLabel);
         
         //player realm
-        realmPanel = ui.createPanel(0, 200, 300, 40, Color.BLUE);
+        realmPanel = ui.createPanel(0, 200, 300, 40, Color.BLACK);
+        ui.player.realm(); // updates realm
         realmLabel = ui.createLabel("[Realm] " + ui.player.getTitle(), ui.gameFont, Color.WHITE);
         realmPanel.add(realmLabel);
-        
         
         //player combat power display
         combatPowerPanel = ui.createPanel(0, 100, 200, 40, Color.BLACK);
@@ -63,7 +63,6 @@ public class PlayerWindow {
         martialBodyPanel = ui.createPanel(0, 400, 300, 40, Color.BLACK);
         martialBodyLabel = ui.createLabel("[Martial Body] " + martialBodyText, ui.gameFont, Color.WHITE);
         martialBodyPanel.add(martialBodyLabel);
-        
         
         //gold display
         goldPanel = ui.createPanel(400, 100, 100, 40, Color.BLACK);

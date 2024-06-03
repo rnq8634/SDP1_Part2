@@ -26,7 +26,6 @@ public class UI
     public JTextField nameField;
     
     //class reference
-    //public Character character;
     public Player player;
     private PlayerWindow playerWindow;
     private UIManager uiManager;
@@ -76,65 +75,9 @@ public class UI
         screen.add(loadGameButtonPanel);
         screen.add(exitGameButtonPanel);
         
+        // screen refresh
         screen.revalidate();
         screen.repaint();
-    }
-    
-    // helper method
-    public JPanel createPanel(int x, int y, int width, int height, Color bgColor) 
-    {
-        JPanel panel = new JPanel();
-        panel.setBounds(x, y, width, height);
-        panel.setBackground(bgColor);
-        return panel;
-    }
-    
-    // helper method
-    public JLabel createLabel(String text, Font font, Color fgColor) 
-    {
-        JLabel label = new JLabel(text);
-        label.setFont(font);
-        label.setForeground(fgColor);
-        return label;
-    }
-    
-    // helper method
-    public void clearScreen() 
-    {
-        screen.getContentPane().removeAll();
-        screen.revalidate();
-        screen.repaint();
-    }
-    
-    // helper method
-    public JPanel createButtonPanel(int x, int y, String buttonText, ActionListener action) 
-    {
-        JPanel panel = createPanel(x, y, 120, 31, Color.BLACK);
-        JButton button = createButton(buttonText, action);
-        panel.add(button);
-        return panel;
-    }
-    
-    // helper method
-    public JButton createButton(String text, ActionListener action) 
-    {
-        JButton button = new JButton(text);
-        button.setBackground(Color.BLACK);
-        button.setForeground(Color.WHITE);
-        button.addActionListener(action);
-        return button;
-    }
-    
-    // helper method
-    public JTextArea createTextArea(String text, Font font, Color fgColor, boolean lineWrap) 
-    {
-        JTextArea textArea = new JTextArea(text);
-        textArea.setFont(font);
-        textArea.setBackground(Color.BLACK);
-        textArea.setForeground(fgColor);
-        textArea.setLineWrap(lineWrap);
-        textArea.setWrapStyleWord(lineWrap);
-        return textArea;
     }
     
     // start of game(where user inputs name)
@@ -159,6 +102,7 @@ public class UI
         screen.add(userInputPanel);
         screen.add(gameTextPanel);
         
+        // screen refresh
         screen.revalidate();
         screen.repaint();
     }
@@ -257,8 +201,67 @@ public class UI
         screen.add(menuButtonPanel);
         screen.add(saveButtonPanel);
         
+        // screen refresh
         screen.revalidate();
         screen.repaint();
+    }
+    
+    // helper method
+    public JPanel createPanel(int x, int y, int width, int height, Color bgColor) 
+    {
+        JPanel panel = new JPanel();
+        panel.setBounds(x, y, width, height);
+        panel.setBackground(bgColor);
+        return panel;
+    }
+    
+    // helper method
+    public JLabel createLabel(String text, Font font, Color fgColor) 
+    {
+        JLabel label = new JLabel(text);
+        label.setFont(font);
+        label.setForeground(fgColor);
+        return label;
+    }
+    
+    // helper method
+    public void clearScreen() 
+    {
+        screen.getContentPane().removeAll();
+        screen.revalidate();
+        screen.repaint();
+    }
+    
+    // helper method
+    public JPanel createButtonPanel(int x, int y, String buttonText, ActionListener action) 
+    {
+        JPanel panel = createPanel(x, y, 120, 31, Color.BLACK);
+        JButton button = createButton(buttonText, action);
+        panel.add(button);
+        return panel;
+    }
+    
+    // helper method
+    public JButton createButton(String text, ActionListener action) 
+    {
+        JButton button = new JButton(text);
+        button.setBackground(Color.BLACK);
+        button.setForeground(Color.WHITE);
+        button.addActionListener(action);
+        button.setFocusPainted(false);
+        return button;
+    }
+    
+    // helper method
+    public JTextArea createTextArea(String text, Font font, Color fgColor, boolean lineWrap) 
+    {
+        JTextArea textArea = new JTextArea(text);
+        textArea.setFont(font);
+        textArea.setBackground(Color.BLACK);
+        textArea.setForeground(fgColor);
+        textArea.setLineWrap(lineWrap);
+        textArea.setWrapStyleWord(lineWrap);
+        return textArea;
     }
    
     // method for button action/choices

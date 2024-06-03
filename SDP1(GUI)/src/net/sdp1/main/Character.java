@@ -24,10 +24,6 @@ public abstract class Character implements Serializable
         return cPower;
     }
     
-    /*public int getCombatPower() {
-        return cPower;
-    }*/
-    
     public int getQi() 
     {
         return qi;
