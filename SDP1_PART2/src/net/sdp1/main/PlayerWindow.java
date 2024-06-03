@@ -39,7 +39,7 @@ public class PlayerWindow {
         combatPowerPanel.add(combatPowerLabel);
         
         //name display
-        playerNamePanel = ui.createPanel(0, 50, 100, 30, Color.BLACK);
+        playerNamePanel = ui.createPanel(0, 50, 150, 30, Color.BLACK);
         playerNameLabel = ui.createLabel("[Name] " + ui.player.getName(), ui.gameFont, Color.WHITE);
         playerNamePanel.add(playerNameLabel);
         

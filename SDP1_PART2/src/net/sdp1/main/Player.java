@@ -55,21 +55,20 @@ public class Player extends Character implements Serializable
     // INFO
     /*public static void characterInfo() 
     {
-        Print.emptySpace();
-        Print.separator(30);
+        
         Print.center("[CHARACTER INFO]", 30);
-        Print.separator(30);
+        
         System.out.println("[" + player.name + "] " + " [HEALTH] " + player.health + "/" + player.maxHealth);
         player.realm();
         player.combatPower();
-        Print.separator(30);
+        
         //player qi and gold
         System.out.println("[QI ACCUMULATED] " + player.qi + " [GOLD] " + player.gold);
-        Print.separator(30);
+        
         // number of potions
         System.out.println("[POUCH]");
         System.out.println("[Elixir(s) Held] " + player.elix);
-        Print.separator(30);
+        
         //chosen traits
         if(player.numMartialSkill > 0) 
         {
@@ -84,11 +83,9 @@ public class Player extends Character implements Serializable
             Print.separator(45);
         }
         player.qiStrengthening();
-        Print.enterOneToContinue();
+        
     }*/
     
-    //
-    //method to show player's playthrough
     //end results of game
     /*public static void death() 
     {
@@ -104,12 +101,11 @@ public class Player extends Character implements Serializable
         Print.emptySpace();
         if(player.recoverRemaining >= 1) 
         {
-            Print.separator(30);
             System.out.println("Do you want to recover?");
             System.out.println("[RECOVER] " + player.recoverRemaining);
-            Print.separator(30);
+            
             System.out.println("[1] Yes, my body's beat...\n[2] No, I'm brimming with QI!!!");
-            Print.separator(30);
+            
             int input = Print.userInput("-> ", 2);
             if(input == 1) 
             {
@@ -121,27 +117,19 @@ public class Player extends Character implements Serializable
                     player.health += hpRestored;
                     if(player.health > player.maxHealth)
                         player.health = player.maxHealth;
-                    Print.separator(40);
+                    
                     System.out.println("You did Restorative Breathing and regained "+ hpRestored + " health.");
-                    Print.separator(40);
+                    
                     System.out.println("You're now at " + player.health + "/" + player.maxHealth + " health.");
-                    Print.separator(30);
-                    Print.enterOneToContinue();
+                    
                     player.recoverRemaining--;
                 }else if(player.health == player.maxHealth) 
                 {
-                    Print.separator(50);
                     System.out.println("There is no reason to rest since you are at full health!");
-                    Print.separator(50);
-                    Print.enterOneToContinue();
                 }
             }else 
             {
-                Print.emptySpace();
-                Print.separator(45);
                 System.out.println("You felt that there is no reason to rest.");
-                Print.separator(45);
-                Print.enterOneToContinue();
             }
         }
     }
@@ -149,26 +137,23 @@ public class Player extends Character implements Serializable
     //method to let the player choose their path
     public void martialScroll() 
     {
-        
         Print.heading("Choose a Martial Technique:");
         System.out.println("[1] " + martialSkill[numMartialSkill]);
         System.out.println("[2] " + martialBody[numMartialBody]);
-        Print.separator(30);
+        
         //system gets the player's choice
         int input = Print.userInput("-> ", 2);
-        Print.emptySpace();
+    
         // deal with both cases
         if(input == 1) 
         {
-            Print.separator(50);
             System.out.println("You havearnt " + martialSkill[numMartialSkill] + "!");
-            Print.separator(50);
+            
             numMartialSkill++;
         } else 
         {
-            Print.separator(50);
             System.out.println("You have attained " + martialBody[numMartialBody] + "!");
-            Print.separator(50);
+            
             numMartialBody++;
         }
         
@@ -203,7 +188,6 @@ public class Player extends Character implements Serializable
             System.out.println("You are no longer bound by mortal realms...");
             System.out.println("For you, shrouded in limitless QI, are the honored one...");
             System.out.println("Maximum Health has been increased from 200 -> 800.");
-            
         }
     }*/
     

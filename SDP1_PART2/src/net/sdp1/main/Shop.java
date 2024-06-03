@@ -16,9 +16,9 @@ public class Shop
         System.out.println("[GOLD] " + Player.player.gold);
         
         System.out.println("Do you want to buy this item?\n[1] Yes, I need it.\n[2] No thanks.");
-        int input = Print.userInput("-> ", 2);
+        //int input = Print.userInput("-> ", 2);
         //check if the player confirms
-        if(input == 1) 
+        //if(input == 1) 
         {
             
             //check if the player has enough gold
@@ -36,11 +36,11 @@ public class Shop
                 System.out.println("You don't have enough gold...");
                 
             }
-        } else {
+        } //else {
             
             System.out.println("The hooded stranger waves to you as he disappears into mist.");
             
         }
     }
     
-}
+

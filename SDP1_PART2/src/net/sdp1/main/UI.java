@@ -97,8 +97,8 @@ public class UI
         
         //confirm button
         confirmButton = createButton("[Confirm]", e -> confirmName());
-        
         userInputPanel.add(confirmButton);
+        
         screen.add(userInputPanel);
         screen.add(gameTextPanel);
         

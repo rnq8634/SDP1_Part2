@@ -6,7 +6,7 @@ public class Story
     public static void gameIntro() 
     {
         
-        Print.center("[STORY]", 50);
+        //Print.center("[STORY]", 50);
         
         System.out.println("You are a scout from the infamous Cult of Demons who");
         System.out.println("seek nothing but power. During your routine patrol,");
@@ -24,7 +24,7 @@ public class Story
     public static void storyPartOneStart() 
     {
         
-        Print.center("PART - I - BEGINNING", 50);
+        //Print.center("PART - I - BEGINNING", 50);
         
         System.out.println("Waking up from the barracks, just days before your");
         System.out.println("scheduled routine patrol, the game prompt that you");
@@ -40,7 +40,7 @@ public class Story
     public static void storyPartOneEnd() 
     {
         
-        Print.center("PART - I - END", 50);
+        //Print.center("PART - I - END", 50);
         
         System.out.println("You have gathered enough strength and QI in a couple");
         System.out.println("days, but it wasn't enough to face the monster from");
@@ -54,7 +54,7 @@ public class Story
     public static void storyPartTwoStart() 
     {
         
-        Print.center("PART - II - BEGINNING", 50);
+        //Print.center("PART - II - BEGINNING", 50);
         
         System.out.println("part 2 goes here");
         
@@ -63,7 +63,7 @@ public class Story
     public static void storyPartTwoEnd() 
     {
         
-        Print.center("PART - II - END", 50);
+        //Print.center("PART - II - END", 50);
         
         System.out.println("part 2 goes here");
         
@@ -72,7 +72,7 @@ public class Story
     public static void storyPartThreeStart() 
     {
         
-        Print.center("PART - III - BEGINNING", 50);
+        //Print.center("PART - III - BEGINNING", 50);
         
         System.out.println("part 3 goes here");
         
@@ -81,7 +81,7 @@ public class Story
     public static void storyPartThreeEnd() 
     {
         
-        Print.center("PART - III - END", 50);
+        //Print.center("PART - III - END", 50);
         
         System.out.println("part 3 goes here");
         
@@ -90,7 +90,7 @@ public class Story
     public static void storyPartFourStart() 
     {
         
-        Print.center("PART - IV", 50);
+        //Print.center("PART - IV", 50);
         
         System.out.println("part 4 goes here");
         
@@ -99,7 +99,7 @@ public class Story
     public static void gameEnd(Player player) 
     {
         
-        Print.center("[GAME END]", 50);
+        //Print.center("[GAME END]", 50);
         System.out.println("[Well done! " + player.name + "]");
         System.out.println("[You have reached the pinnacle of strength and rose to the top of the Clan!]");
         

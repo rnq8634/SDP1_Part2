@@ -171,14 +171,14 @@ public class GameMechanic
         while(true) 
         {
             
-            Print.heading(enemy.name + "\n[HEALTH] " + enemy.health + "/" + enemy.maxHealth);
-            Print.heading(Player.player.name + "\n[HEALTH] " + Player.player.health + "/" + Player.player.maxHealth);
-            Print.center("[ACTIONS]", 30);
+            //Print.heading(enemy.name + "\n[HEALTH] " + enemy.health + "/" + enemy.maxHealth);
+            //Print.heading(Player.player.name + "\n[HEALTH] " + Player.player.health + "/" + Player.player.maxHealth);
+            //Print.center("[ACTIONS]", 30);
             
             System.out.println("[1] Fight\n[2] Use an Elixir\n[3] Retreat");
-            int input = Print.userInput("-> ", 3);
+            //int input = Print.userInput("-> ", 3);
             //react to user input
-            if(input == 1) 
+            //if(input == 1) 
             {
                 //FIGHT
                 // calculate dmg and dmgReceived (dmg enemy deals to player)
@@ -197,7 +197,7 @@ public class GameMechanic
                 enemy.health -= atk;
                 // print the info of the battle
                 
-                Print.center("[RESULT]", 35);
+                //Print.center("[RESULT]", 35);
                 //System.out.println("You dealt " + atk + " damage to " + enemy.name + ".");
                 
                 if(atk > 0) {
@@ -224,7 +224,7 @@ public class GameMechanic
                 {
                     //to tell the player has won
                     
-                    Print.center("[BATTLE RESULTS]", 38);
+                    //Print.center("[BATTLE RESULTS]", 38);
                     
                     System.out.println("You killed " + enemy.name + " and harvested their QI!");
                     
@@ -247,25 +247,25 @@ public class GameMechanic
                     {
                         Player.player.gold += goldEarned;
                         System.out.println("You looted " + goldEarned + "G from " + enemy.name + "'s corpse!");
-                        Print.separator(50);
+                        //Print.separator(50);
                     }
                     
                     break;
                 }
-            }else if(input == 2) 
+            }//else if(input == 2) 
             {
                 //USE ELIXIR
                 
                 if(Player.player.elix > 0 && Player.player.health < Player.player.maxHealth) 
                 {
                     //player CAN USE a elixir
-                    Print.heading("[HEALTH] " + Player.player.health + "/" + Player.player.maxHealth);
+                    //Print.heading("[HEALTH] " + Player.player.health + "/" + Player.player.maxHealth);
                     System.out.println("[ELIXIR HELD] " + Player.player.elix);
                     System.out.println("Do you want to consume this elixir?");
                     
                     System.out.println("[1] Yes, I'm in a pinch!\n[2] Not now.");
-                    input = Print.userInput("-> ", 2);
-                    if(input == 1) 
+                    //input = Print.userInput("-> ", 2);
+                    //if(input == 1) 
                     {
                         // if player uses elixir
                         Player.player.health = Player.player.maxHealth;
@@ -279,10 +279,10 @@ public class GameMechanic
                 }else 
                 {
                     //player doesnt have an elixir
-                    Print.heading("You do not have any elixir!");
+                    //Print.heading("You do not have any elixir!");
                     
                 }
-            }else{
+            }//else{
                 //RUN AWAY
                 
                 //check that the player isnt in the last act so that they can't run awawy from boss
@@ -291,12 +291,12 @@ public class GameMechanic
                     //chance to run away
                     if(Math.random() * 10 + 1 <= 4.5) 
                     {
-                        Print.heading("You have escaped from " + enemy.name + "!");
+                        //Print.heading("You have escaped from " + enemy.name + "!");
                         
                         break;
                     }else
                     {
-                        Print.heading("You didn't manage to escape.");
+                        //Print.heading("You didn't manage to escape.");
                         //calculate the damage the player takes
                         int dmgReceived = enemy.attack();
                         System.out.println("You took " + dmgReceived + " damage while trying to flee!");
@@ -310,7 +310,7 @@ public class GameMechanic
                     }
                 }else
                 {
-                    Print.heading("Escape is futile...");
+                    //Print.heading("Escape is futile...");
                     
                 }
             }
@@ -318,7 +318,7 @@ public class GameMechanic
     }
     
     // main game loop
-    public void gameLoop() 
+    /*public void gameLoop() 
     {
         while(isRunning)
         {
@@ -334,5 +334,4 @@ public class GameMechanic
                 isRunning = false;
             }
         }
-    }
-}
+    }*/
