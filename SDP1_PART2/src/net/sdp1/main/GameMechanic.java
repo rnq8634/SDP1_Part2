@@ -71,10 +71,8 @@ public class GameMechanic
         {
             //screen transition
             ui.clearScreen();
-            
             //text saying error
             JOptionPane.showMessageDialog(ui.screen, "Error saving game...");
-            
             //screen transition
             ui.screen.revalidate();
             ui.screen.repaint();
@@ -107,10 +105,8 @@ public class GameMechanic
         } catch(IOException | ClassNotFoundException e) 
         {
             ui.clearScreen();
-            
             // says text error
             JOptionPane.showMessageDialog(ui.screen, "You dont have a saved file!");
-            
             //screen transition
             ui.screen.revalidate();
             ui.screen.repaint();

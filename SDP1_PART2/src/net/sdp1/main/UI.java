@@ -201,8 +201,24 @@ public class UI
         screen.add(menuButtonPanel);
         screen.add(saveButtonPanel);
         
-        //calls first area
-        firstArea();
+        //calls game location
+        switch (GameMechanic.location) {
+            case 0:
+                firstArea();
+                break;
+            case 1:
+                secondArea();
+                break;
+            case 2:
+                thirdArea();
+                break;
+            case 3:
+                fourthArea();
+                break;
+            default:
+                firstArea();
+                break;
+        }
         
         // screen refresh
         screen.revalidate();
@@ -212,14 +228,14 @@ public class UI
     //game locations(will be changed later)
     public void firstArea() {
         //player location
-        GameMechanic.location = 1;
+        GameMechanic.location = 0;
         
         gameTextArea.setText("You are currently at " + GameMechanic.locations[GameMechanic.location] + "\n \nWhat do you plan to do?");
         
         //actions
         buttonEditor(action1, "Attend your first mission", e -> secondArea());
         
-        buttonEditor(action2, "Go in the wilderness", e -> titleScreen());
+        buttonEditor(action2, "Go and fight", e -> titleScreen());
         
         buttonEditor(action3, "Listen for rumors", e -> titleScreen());
         
@@ -229,14 +245,14 @@ public class UI
     public void secondArea() {
         //player location
         
-        GameMechanic.location = 2;
+        GameMechanic.location = 1;
         
         gameTextArea.setText("You are currently at " + GameMechanic.locations[GameMechanic.location] + "\n \nWhat do you plan to do?");
         
         //actions
-        buttonEditor(action1, "", null);
+        buttonEditor(action1, "Attend your second mission", e -> thirdArea());
         
-        buttonEditor(action2, "", null);
+        buttonEditor(action2, "Go and fight", null);
         
         buttonEditor(action3, "", null);
         
@@ -245,14 +261,14 @@ public class UI
     
     public void thirdArea() {
         //player location
-        GameMechanic.location = 3;
+        GameMechanic.location = 2;
         
         gameTextArea.setText("You are currently at " + GameMechanic.locations[GameMechanic.location] + "\n \nWhat do you plan to do?");
         
         //actions
-        buttonEditor(action1, "", null);
+        buttonEditor(action1, "Head to the final area", e -> fourthArea());
         
-        buttonEditor(action2, "", null);
+        buttonEditor(action2, "Go and fight", null);
         
         buttonEditor(action3, "", null);
         
@@ -261,14 +277,14 @@ public class UI
     
     public void fourthArea() {
         //player location
-        GameMechanic.location = 4;
+        GameMechanic.location = 3;
         
         gameTextArea.setText("You are currently at " + GameMechanic.locations[GameMechanic.location] + "\n \nWhat do you plan to do?");
         
         //actions
-        buttonEditor(action1, "", null);
+        buttonEditor(action1, "Face him...", null);
         
-        buttonEditor(action2, "", null);
+        buttonEditor(action2, "Go and fight", null);
         
         buttonEditor(action3, "", null);
         
