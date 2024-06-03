@@ -14,7 +14,7 @@ public class Player extends Character implements Serializable
     static Player player;
     
     //additional player stats
-    int gold, recoverRemaining, elix;
+    int gold, recoverRemaining, elix, cPower;
     
     //arrays to store skill names
     public String[] martialSkill = 
@@ -39,28 +39,12 @@ public class Player extends Character implements Serializable
         this.numMartialSkill = 0;
         this.numMartialBody = 0;
         //sets additional stats
-        this.gold = 5;
+        this.gold = 0;
         this.recoverRemaining = 1;
         this.elix = 0;
+        
         // let the player choose a trait when starting a first playthrough
         //martialScroll();
-    }
-    
-    public Player(String name, int maxHealth, int qi) 
-    {
-        super(name, maxHealth, qi);
-    }
-    
-    private static final long serialVersionUID = 1L;
-    
-    public Player() 
-    {
-        super("", 100, 0);
-        this.numMartialSkill = 0;
-        this.numMartialBody = 0;
-        this.gold = 5;
-        this.recoverRemaining = 1;
-        this.elix = 0;
     }
     
     //getters and setters
@@ -189,13 +173,6 @@ public class Player extends Character implements Serializable
         System.out.println("You accumulated " + player.qi + " QI in this life. Try to earn more in the next!!!");
         Print.separator(50);
         GameMechanic.isRunning = false;
-    }
-    
-    //combat power, calculates players power based on their current QI and number of martial skill/body they currently have
-    public int combatPower() {
-        int cPower = qi * 4 + numMartialSkill * 100 + numMartialBody * 10 - (player.maxHealth - player.health);
-        System.out.println("[COMBAT POWER] " + cPower);
-        return cPower;
     }
     
     //taking a rest

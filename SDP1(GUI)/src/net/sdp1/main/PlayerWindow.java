@@ -23,10 +23,17 @@ public class PlayerWindow {
         ui.clearScreen();
         
         //character info display(says character info)
+        characterInfoPanel = ui.createPanel(200, 0, 300, 40, Color.BLUE);
+        characterInfoLabel = ui.createLabel("[Character Info]", ui.gameFont, Color.WHITE);
+        characterInfoPanel.add(characterInfoLabel);
         
         //player realm
         
+        
         //player combat power display
+        combatPowerPanel = ui.createPanel(0, 150, 200, 40, Color.BLACK);
+        combatPowerLabel = ui.createLabel("Combat Power: " + ui.player.combatPower(), ui.gameFont, Color.WHITE);
+        combatPowerPanel.add(combatPowerLabel);
         
         //name display
         ui.playerNameLabel.setText("Name: " + ui.player.getName());
@@ -66,13 +73,15 @@ public class PlayerWindow {
         backToGameButtonPanel = ui.createPanel(325, 500, 130, 32, Color.BLACK);
         backToGameButtonPanel.add(backToGameButton);
         
-        //screen display
+        //screen display(adds components to the screen)
         ui.screen.add(qiPanel);
         ui.screen.add(backToGameButtonPanel);
         ui.screen.add(goldPanel);
         ui.screen.add(elixirPanel);
+        ui.screen.add(combatPowerPanel);
+        ui.screen.add(characterInfoPanel);
         
-        //screen transition
+        //screen transition (refreshes screen
         ui.screen.revalidate();
         ui.screen.repaint();
     }
