@@ -117,7 +117,7 @@ public class GameMechanic
         }
     }
     
-    public static void storyProgress() 
+    public void storyProgress() 
     {
         if(Player.player.qi >= 40 && part == 1) 
         {
@@ -133,7 +133,7 @@ public class GameMechanic
     }
     
     //story progression, calls encounters and story starts and ends
-    private static void storyProgression(int newPart, int newLocation, Runnable storyPartEnd, Runnable storyPartStart) 
+    public void storyProgression(int newPart, int newLocation, Runnable storyPartEnd, Runnable storyPartStart) 
     {
         part = newPart;
         location = newLocation;
@@ -154,7 +154,7 @@ public class GameMechanic
     }
     
     //method to continue the journey (THIS WILL BE A BUTTON!!!)
-    public static void continueJourney() 
+    public void continueJourney() 
     {
         //check which part of the story the player is on
         storyProgress();

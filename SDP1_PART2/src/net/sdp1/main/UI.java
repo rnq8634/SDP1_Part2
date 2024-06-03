@@ -128,7 +128,7 @@ public class UI
         clearScreen();
         
         //main text area
-        gameTextPanel = createPanel(100, 100, 600, 250, Color.BLUE);
+        gameTextPanel = createPanel(100, 100, 600, 250, Color.BLACK);
         gameTextArea = createTextArea("Hello World!", gameFont, Color.WHITE, true);
         gameTextArea.setBounds(100, 100, 600, 250);
         gameTextPanel.add(gameTextArea);
@@ -201,12 +201,81 @@ public class UI
         screen.add(menuButtonPanel);
         screen.add(saveButtonPanel);
         
+        //calls first area
+        firstArea();
+        
         // screen refresh
         screen.revalidate();
         screen.repaint();
     }
     
-    // helper method
+    //game locations(will be changed later)
+    public void firstArea() {
+        //player location
+        GameMechanic.location = 1;
+        
+        gameTextArea.setText("You are currently at " + GameMechanic.locations[GameMechanic.location] + "\n \nWhat do you plan to do?");
+        
+        //actions
+        buttonEditor(action1, "Attend your first mission", e -> secondArea());
+        
+        buttonEditor(action2, "Go in the wilderness", e -> titleScreen());
+        
+        buttonEditor(action3, "Listen for rumors", e -> titleScreen());
+        
+        buttonEditor(action4, "", null);
+    }
+    
+    public void secondArea() {
+        //player location
+        
+        GameMechanic.location = 2;
+        
+        gameTextArea.setText("You are currently at " + GameMechanic.locations[GameMechanic.location] + "\n \nWhat do you plan to do?");
+        
+        //actions
+        buttonEditor(action1, "", null);
+        
+        buttonEditor(action2, "", null);
+        
+        buttonEditor(action3, "", null);
+        
+        buttonEditor(action4, "", null);
+    }
+    
+    public void thirdArea() {
+        //player location
+        GameMechanic.location = 3;
+        
+        gameTextArea.setText("You are currently at " + GameMechanic.locations[GameMechanic.location] + "\n \nWhat do you plan to do?");
+        
+        //actions
+        buttonEditor(action1, "", null);
+        
+        buttonEditor(action2, "", null);
+        
+        buttonEditor(action3, "", null);
+        
+        buttonEditor(action4, "", null);
+    }
+    
+    public void fourthArea() {
+        //player location
+        GameMechanic.location = 4;
+        
+        gameTextArea.setText("You are currently at " + GameMechanic.locations[GameMechanic.location] + "\n \nWhat do you plan to do?");
+        
+        //actions
+        buttonEditor(action1, "", null);
+        
+        buttonEditor(action2, "", null);
+        
+        buttonEditor(action3, "", null);
+        
+        buttonEditor(action4, "", null);
+    }
+    
+    // helper method for creating panels
     public JPanel createPanel(int x, int y, int width, int height, Color bgColor) 
     {
         JPanel panel = new JPanel();
@@ -215,7 +284,16 @@ public class UI
         return panel;
     }
     
-    // helper method
+    // helper method for editing buttons (adding text and changing actions)
+    public void buttonEditor(JButton button, String text, ActionListener action) {
+        button.setText(text);
+        for (ActionListener al : button.getActionListeners()) {
+            button.removeActionListener(al);
+        }
+        button.addActionListener(action);
+    }
+    
+    // helper method for creating labels
     public JLabel createLabel(String text, Font font, Color fgColor) 
     {
         JLabel label = new JLabel(text);
@@ -224,7 +302,7 @@ public class UI
         return label;
     }
     
-    // helper method
+    // helper method for clearing screen
     public void clearScreen() 
     {
         screen.getContentPane().removeAll();
@@ -232,7 +310,7 @@ public class UI
         screen.repaint();
     }
     
-    // helper method
+    // helper method for creating buttons and panels in one go
     public JPanel createButtonPanel(int x, int y, String buttonText, ActionListener action) 
     {
         JPanel panel = createPanel(x, y, 120, 31, Color.BLACK);
@@ -241,7 +319,7 @@ public class UI
         return panel;
     }
     
-    // helper method
+    // helper method for creating buttons
     public JButton createButton(String text, ActionListener action) 
     {
         JButton button = new JButton(text);
@@ -252,7 +330,7 @@ public class UI
         return button;
     }
     
-    // helper method
+    // helper method for adding text areas
     public JTextArea createTextArea(String text, Font font, Color fgColor, boolean lineWrap) 
     {
         JTextArea textArea = new JTextArea(text);
