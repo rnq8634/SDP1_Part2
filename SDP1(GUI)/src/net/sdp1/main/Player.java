@@ -11,6 +11,8 @@ public class Player extends Character implements Serializable
     //integers to store number of upgrades/skills in each path
     public int numMartialSkill, numMartialBody;
     
+    public String title;
+    
     static Player player;
     
     //additional player stats
@@ -34,7 +36,7 @@ public class Player extends Character implements Serializable
     public Player(String name) 
     {
         // calling constructor of superclass
-        super(name, 100, 0);
+        super(name, 100, 100);
         // setting of upgrades to 0
         this.numMartialSkill = 0;
         this.numMartialBody = 0;
@@ -42,6 +44,7 @@ public class Player extends Character implements Serializable
         this.gold = 0;
         this.recoverRemaining = 1;
         this.elix = 0;
+        this.title = "";
         
         // let the player choose a trait when starting a first playthrough
         //martialScroll();
@@ -49,7 +52,7 @@ public class Player extends Character implements Serializable
     
     //character stats
     // INFO
-    public static void characterInfo() 
+    /*public static void characterInfo() 
     {
         Print.emptySpace();
         Print.separator(30);
@@ -81,19 +84,17 @@ public class Player extends Character implements Serializable
         }
         player.qiStrengthening();
         Print.enterOneToContinue();
-    }
+    }*/
     
     //
     //method to show player's playthrough
     //end results of game
-    public static void death() 
+    /*public static void death() 
     {
-        Print.emptySpace();
-        Print.separator(50);
+        
         System.out.println("You can feel your QI seeping away as you leave this world behind...");
         System.out.println("You accumulated " + player.qi + " QI in this life. Try to earn more in the next!!!");
-        Print.separator(50);
-        GameMechanic.isRunning = false;
+        
     }
     
     //taking a rest
@@ -147,7 +148,7 @@ public class Player extends Character implements Serializable
     //method to let the player choose their path
     public void martialScroll() 
     {
-        Print.emptySpace();
+        
         Print.heading("Choose a Martial Technique:");
         System.out.println("[1] " + martialSkill[numMartialSkill]);
         System.out.println("[2] " + martialBody[numMartialBody]);
@@ -169,7 +170,7 @@ public class Player extends Character implements Serializable
             Print.separator(50);
             numMartialBody++;
         }
-        Print.enterOneToContinue();
+        
     }
     
     //qi strengthening, increases max health
@@ -179,39 +180,36 @@ public class Player extends Character implements Serializable
         {
             maxHealth = 150;
             health = maxHealth;
-            Print.emptySpace();
-            Print.separator(50);
+            
             System.out.println("You have attained the realm of Primodial Soul.");
             System.out.println("The QI flowing in your veins has strengthened your body!!");
             System.out.println("Maximum Health has been increased from 100 -> 150.");
-            Print.separator(50);
+            
         } else if(qi >= 60 && qi < 200 && maxHealth == 150) 
         {
             maxHealth = 200;
             health = maxHealth;
-            Print.emptySpace();
-            Print.separator(50);
+            
             System.out.println("You have attained the realm of Body Unification.");
             System.out.println("The QI flowing in your veins has united your body and soul!!");
             System.out.println("Maximum Health has been increased from 150 -> 200.");
-            Print.separator(50);
+            
         } else if(qi >= 200 && qi < 600 && maxHealth == 200) 
         {
             maxHealth = 800;
             health = maxHealth;
-            Print.emptySpace();
-            Print.separator(50);
+            
             System.out.println("You are no longer bound by mortal realms...");
             System.out.println("For you, shrouded in limitless QI, are the honored one...");
             System.out.println("Maximum Health has been increased from 200 -> 800.");
-            Print.separator(50);
+            
         }
-    }
+    }*/
     
     //realms
-    public void realm() 
+    public String realm() 
     {
-        String title = null;
+        title = "";
         if(player.qi < 30) 
         {
             title = "Foundation Building";
@@ -225,7 +223,7 @@ public class Player extends Character implements Serializable
         {
             title = "Supreme Divinity";
         }
-        System.out.println("[Realm] " + title);
+        return title;
     }
     
     //getters and setters
@@ -262,6 +260,11 @@ public class Player extends Character implements Serializable
     public void setRecoverRemaining(int recoverRemaining) 
     {
         this.recoverRemaining = recoverRemaining;
+    }
+    
+    public String getTitle() 
+    {
+        return title;
     }
     
     public int getElix() 

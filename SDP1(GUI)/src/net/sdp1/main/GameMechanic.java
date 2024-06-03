@@ -202,7 +202,7 @@ public class GameMechanic
         part = newPart;
         location = newLocation;
         storyPartEnd.run();
-        Player.player.martialScroll();
+        //Player.player.martialScroll();
         storyPartStart.run();
         rngEncounters();
         Player.player.health = Player.player.maxHealth;
@@ -223,7 +223,7 @@ public class GameMechanic
         storyProgress();
         //check if the player isnt in the last part of the story
         if(part != 4) {
-            Random.encounter();
+            //Random.encounter();
         }
     }
     
@@ -283,7 +283,7 @@ public class GameMechanic
                 //check if the player is still alive
                 if(Player.player.health <= 0) 
                 {
-                    Player.death();
+                    //Player.death();
                     break;
                 }else if(enemy.health <= 0) 
                 {
@@ -371,8 +371,9 @@ public class GameMechanic
                         Player.player.health -= dmgReceived;
                         Print.enterOneToContinue();
                         //check if the player is alive
-                        if(Player.player.health <= 0)
-                            Player.death();
+                        if(Player.player.health <= 0) {
+                            //Player.death();
+                        }
                     }
                 }else
                 {
@@ -393,7 +394,7 @@ public class GameMechanic
             if(input == 1) {
                 continueJourney();
             } else if(input == 2) {
-                Player.characterInfo();
+                //Player.characterInfo();
             } else if(input == 3) {
                 saveGame();
             } else if(input == 4) {

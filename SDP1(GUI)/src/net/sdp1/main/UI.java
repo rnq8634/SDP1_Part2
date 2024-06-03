@@ -26,7 +26,7 @@ public class UI
     public JTextField nameField;
     
     //class reference
-    public Character character;
+    //public Character character;
     public Player player;
     private PlayerWindow playerWindow;
     private UIManager uiManager;
@@ -67,9 +67,9 @@ public class UI
         titleNamePanel.add(titleNameLabel);
         
         //buttons
-        newGameButtonPanel = createButtonPanel(300, 400, "NEW GAME", e -> startGame());
-        loadGameButtonPanel = createButtonPanel(300, 428, "LOAD GAME", e -> gameMechanic.loadGame());
-        exitGameButtonPanel = createButtonPanel(300, 455, "EXIT GAME", e -> System.exit(0));
+        newGameButtonPanel = createButtonPanel(300, 400, "[NEW GAME]", e -> startGame());
+        loadGameButtonPanel = createButtonPanel(300, 428, "[LOAD GAME]", e -> gameMechanic.loadGame());
+        exitGameButtonPanel = createButtonPanel(300, 455, "[EXIT GAME]", e -> System.exit(0));
         
         screen.add(titleNamePanel);
         screen.add(newGameButtonPanel);
@@ -153,7 +153,7 @@ public class UI
         gameTextPanel.add(gameTextArea);
         
         //confirm button
-        confirmButton = createButton("Confirm", e -> confirmName());
+        confirmButton = createButton("[Confirm]", e -> confirmName());
         
         userInputPanel.add(confirmButton);
         screen.add(userInputPanel);
@@ -205,18 +205,18 @@ public class UI
         actionMenuPanel.add(action4);
         
         //save button
-        saveButton = createButton("Save Game", e -> gameMechanic.saveGame());
-        saveButtonPanel = createPanel(570, 350, 100, 31, Color.BLACK);
+        saveButton = createButton("[Save Game]", e -> gameMechanic.saveGame());
+        saveButtonPanel = createPanel(570, 350, 120, 33, Color.BLACK);
         saveButtonPanel.add(saveButton);
         
         //menu button goes back to the main menu
-        menuButton = createButton("Back to title screen", e -> titleScreen());
-        menuButtonPanel = createPanel(325, 500, 150, 32, Color.BLACK);
+        menuButton = createButton("[Back to title screen]", e -> titleScreen());
+        menuButtonPanel = createPanel(325, 500, 170, 33, Color.BLACK);
         menuButtonPanel.add(menuButton);
         
         //player window button(whwre stats can be seen)
-        playerWindowButton = createButton("Player Window", e -> playerWindow.playerWindowUI());
-        playerWindowPanel = createPanel(100, 350, 120, 31, Color.BLACK);
+        playerWindowButton = createButton("[Player Window]", e -> playerWindow.playerWindowUI());
+        playerWindowPanel = createPanel(100, 350, 130, 33, Color.BLACK);
         playerWindowPanel.add(playerWindowButton);
         
         //player panel, where player related stuff is displayed
@@ -224,7 +224,7 @@ public class UI
         playerPanel.setLayout(new GridLayout(2, 2));
         
         //name display
-        playerNameLabel = createLabel("Name: " + player.getName(), gameFont, Color.WHITE);
+        playerNameLabel = createLabel("[Name] " + player.getName(), gameFont, Color.WHITE);
         playerPanel.add(playerNameLabel);
         
         //converts String[] to string
@@ -233,11 +233,11 @@ public class UI
                                 : "None";
         
         //displayer for martial body
-        martialBodyLabel = createLabel("Martial Body: " + martialBodyText, gameFont, Color.WHITE);
+        martialBodyLabel = createLabel("[Martial Body] " + martialBodyText, gameFont, Color.WHITE);
         playerPanel.add(martialBodyLabel);
         
         //health display
-        hpLabel = createLabel("HP: " + player.getHealth(), gameFont, Color.WHITE);
+        hpLabel = createLabel("[HP] " + player.getHealth(), gameFont, Color.WHITE);
         playerPanel.add(hpLabel);
         
         //converts String[] to string
@@ -246,7 +246,7 @@ public class UI
                                 : "None";
         
         //martial art display
-        martialLabel = createLabel("Martial Art: " + martialArtText, gameFont, Color.WHITE);
+        martialLabel = createLabel("[Martial Art] " + martialArtText, gameFont, Color.WHITE);
         playerPanel.add(martialLabel);
         
         //shows on the screen

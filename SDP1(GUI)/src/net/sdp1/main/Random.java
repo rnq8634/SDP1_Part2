@@ -3,7 +3,7 @@ package net.sdp1.main;
 public class Random {
     
     //method to calculate random encounter with the enemy
-    public static void encounter() 
+    /*public static void encounter() 
     {
         //random number between 0 and the length of the encounters array
         int turn = (int) (Math.random() * GameMechanic.turns.length);
@@ -17,7 +17,7 @@ public class Random {
         } else {
             Shop.wanderingTrader();
         }
-    }
+    }*/
     
     //random battle method
     public static void enemyFight() 
