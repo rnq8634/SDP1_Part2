@@ -23,7 +23,7 @@ public class GameLocation {
         
         ui.buttonEditor(ui.action2, "Go and fight", null);
         
-        ui.buttonEditor(ui.action3, "Explore the area", null);
+        ui.buttonEditor(ui.action3, "Explore the area", e -> locationDescription());
         
         ui.buttonEditor(ui.action4, "Take a rest", e -> ui.playerRecover.recover());
     }
@@ -133,6 +133,76 @@ public class GameLocation {
     //add location descriptions
     public void locationDescription() 
     {
+        
+        switch (GameMechanic.location) {
+            case 0:
+                
+                ui.gameTextArea.setText("This is the Demonic Barracks. ");
+                
+                ui.buttonEditor(ui.action1, "<", e -> ui.gameGUI());
+                
+                ui.buttonEditor(ui.action2, "Talk to the instructor", null);
+                
+                ui.buttonEditor(ui.action3, "", null);
+                
+                ui.buttonEditor(ui.action4, "", null);
+                
+                break;
+            case 1:
+                
+                ui.gameTextArea.setText("");
+                
+                ui.buttonEditor(ui.action1, "", null);
+                
+                ui.buttonEditor(ui.action2, "", null);
+                
+                ui.buttonEditor(ui.action3, "", null);
+                
+                ui.buttonEditor(ui.action4, "", null);
+                
+                break;
+            case 2:
+                
+                ui.gameTextArea.setText("");
+                
+                ui.buttonEditor(ui.action1, "", null);
+                
+                ui.buttonEditor(ui.action2, "", null);
+                
+                ui.buttonEditor(ui.action3, "", null);
+                
+                ui.buttonEditor(ui.action4, "", null);
+                
+                break;
+            case 3:
+                
+                ui.gameTextArea.setText("");
+                
+                ui.buttonEditor(ui.action1, "", null);
+                
+                ui.buttonEditor(ui.action2, "", null);
+                
+                ui.buttonEditor(ui.action3, "", null);
+                
+                ui.buttonEditor(ui.action4, "", null);
+                
+                break;
+            case 4:
+                
+                ui.gameTextArea.setText("");
+                
+                ui.buttonEditor(ui.action1, "", null);
+                
+                ui.buttonEditor(ui.action2, "", null);
+                
+                ui.buttonEditor(ui.action3, "", null);
+                
+                ui.buttonEditor(ui.action4, "", null);
+                
+                break;
+            default:
+                break;
+        }
         
     }
     
