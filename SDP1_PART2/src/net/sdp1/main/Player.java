@@ -95,31 +95,6 @@ public class Player extends Character implements Serializable
         
     }
     
-    //method to let the player choose their path
-    public void martialScroll() 
-    {
-        Print.heading("Choose a Martial Technique:");
-        System.out.println("[1] " + martialSkill[numMartialSkill]);
-        System.out.println("[2] " + martialBody[numMartialBody]);
-        
-        //system gets the player's choice
-        int input = Print.userInput("-> ", 2);
-    
-        // deal with both cases
-        if(input == 1) 
-        {
-            System.out.println("You havearnt " + martialSkill[numMartialSkill] + "!");
-            
-            numMartialSkill++;
-        } else 
-        {
-            System.out.println("You have attained " + martialBody[numMartialBody] + "!");
-            
-            numMartialBody++;
-        }
-        
-    }
-    
     //qi strengthening, increases max health
     public void qiStrengthening() 
     {

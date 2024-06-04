@@ -33,6 +33,7 @@ public class UI
     public GameMechanic gameMechanic;
     public Combat combat;
     public PlayerRecover playerRecover;
+    public PlayerTrait playerTrait;
     
     public final Font titleFont = new Font("Times New Roman", Font.PLAIN, 50);
     public final Font gameFont = new Font("Times New Roman", Font.PLAIN, 20);
@@ -46,7 +47,7 @@ public class UI
         gameLocation = new GameLocation(this);
         combat = new Combat(this);
         playerRecover = new PlayerRecover(this);
-        
+        playerTrait = new PlayerTrait(this);
     }
     
     //creates the window
@@ -126,6 +127,7 @@ public class UI
             player = new Player(name);
             JOptionPane.showMessageDialog(screen, "So your name is " + name + ".");
             gameGUI();
+            playerTrait.martialScroll();// change to martial scroll chooser(player trait)
         }
     }
     
@@ -148,6 +150,11 @@ public class UI
         action2 = createButton("Action 2", e -> performAction(2));
         action3 = createButton("Action 3", e -> performAction(3));
         action4 = createButton("Action 4", e -> performAction(4));
+        
+        action1.setActionCommand("0");
+        action2.setActionCommand("1");
+        action3.setActionCommand("2");
+        action4.setActionCommand("3");
         
         // action/choices
         actionMenuPanel.add(action1);
@@ -178,18 +185,18 @@ public class UI
         playerNameLabel = createLabel("[Name] " + player.getName(), gameFont, Color.WHITE);
         playerPanel.add(playerNameLabel);
         
+        //health display
+        hpLabel = createLabel("[HP] " + player.getHealth(), gameFont, Color.WHITE);
+        playerPanel.add(hpLabel);
+        
         //converts String[] to string
-        String martialBodyText = (player.getMartialBody() != null && player.getMartialBody().length > 0)
+        /*String martialBodyText = (player.getMartialBody() != null && player.getMartialBody().length > 0)
                                 ? player.getMartialBody()[0]
                                 : "None";
         
         //displayer for martial body
         martialBodyLabel = createLabel("[Martial Body] " + martialBodyText, gameFont, Color.WHITE);
         playerPanel.add(martialBodyLabel);
-        
-        //health display
-        hpLabel = createLabel("[HP] " + player.getHealth(), gameFont, Color.WHITE);
-        playerPanel.add(hpLabel);
         
         //converts String[] to string
         String martialArtText = (player.getMartialSkill() != null && player.getMartialSkill().length > 0)
@@ -198,7 +205,7 @@ public class UI
         
         //martial art display
         martialLabel = createLabel("[Martial Art] " + martialArtText, gameFont, Color.WHITE);
-        playerPanel.add(martialLabel);
+        playerPanel.add(martialLabel);*/
         
         //shows on the screen
         screen.add(playerWindowPanel);
@@ -209,7 +216,8 @@ public class UI
         screen.add(saveButtonPanel);
         
         //calls game location
-        switch (GameMechanic.location) {
+        switch (GameMechanic.location) 
+        {
             case 0:
                 gameLocation.firstArea();
                 break;
@@ -242,9 +250,11 @@ public class UI
     }
     
     // helper method for editing buttons (adding text and changing actions)
-    public void buttonEditor(JButton button, String text, ActionListener action) {
+    public void buttonEditor(JButton button, String text, ActionListener action) 
+    {
         button.setText(text);
-        for (ActionListener al : button.getActionListeners()) {
+        for (ActionListener al : button.getActionListeners()) 
+        {
             button.removeActionListener(al);
         }
         button.addActionListener(action);

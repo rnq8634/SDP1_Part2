@@ -1,0 +1,120 @@
+package net.sdp1.main;
+
+import java.awt.event.ActionEvent;
+
+public class PlayerTrait 
+{
+    
+    public UI ui;
+    
+    public PlayerTrait(UI ui) 
+    {
+        this.ui = ui;
+    }
+    
+    public void martialScroll() 
+    {
+        //game text
+        ui.gameTextArea.setText("Choose your trait");
+        
+        //actions
+        ui.buttonEditor(ui.action1, "Luminous Star Sword", e -> chosenSkill(e, "0"));
+            
+        ui.buttonEditor(ui.action2, "Supreme Sky Demon Void Sword Art", e -> chosenSkill(e, "1"));
+            
+        ui.buttonEditor(ui.action3, "Extreme Art of the Blade God", e -> chosenSkill(e, "2"));
+            
+        ui.buttonEditor(ui.action4, "Sword Fore of the Heavenly Demon", e -> chosenSkill(e, "3"));
+    }
+    
+    public void martialScrollBody() 
+    {
+        //game text
+        ui.gameTextArea.setText("Choose your trait");
+        
+        //actions
+        ui.buttonEditor(ui.action1, "Cool Blood Blockage", e -> chosenBody(e, "0"));
+            
+        ui.buttonEditor(ui.action2, "Extreme Martial Body", e -> chosenBody(e, "1"));
+            
+        ui.buttonEditor(ui.action3, "Heavenly Killing Star", e -> chosenBody(e, "2"));
+            
+        ui.buttonEditor(ui.action4, "Heavenly Body", e -> chosenBody(e, "3"));
+    }
+    
+    public void chosenSkill(ActionEvent e, String actionCommand) {
+        int chosenSkill = Integer.parseInt(actionCommand);
+        
+        switch (chosenSkill) {
+            case 0:
+                ui.player.numMartialSkill = 0;
+                
+                ui.gameTextArea.setText("You have chosen " + ui.player.martialSkill[ui.player.numMartialSkill]);
+                break;
+            case 1:
+                ui.player.numMartialSkill = 1;
+                
+                ui.gameTextArea.setText("You have chosen " + ui.player.martialSkill[ui.player.numMartialSkill]);
+                break;
+            case 2:
+                ui.player.numMartialSkill = 2;
+                
+                ui.gameTextArea.setText("You have chosen " + ui.player.martialSkill[ui.player.numMartialSkill]);
+                break;
+            case 3:
+                ui.player.numMartialSkill = 3;
+                
+                ui.gameTextArea.setText("You have chosen " + ui.player.martialSkill[ui.player.numMartialSkill]);
+                break;
+            default:
+                break;
+        }
+        //actions       
+        ui.buttonEditor(ui.action1, ">", ev -> martialScrollBody());
+                
+        ui.buttonEditor(ui.action2, "", null);
+                
+        ui.buttonEditor(ui.action3, "", null);
+                
+        ui.buttonEditor(ui.action4, "", null);
+        
+    }
+    
+    public void chosenBody(ActionEvent e, String actionCommand) {
+        
+        int chosenBody = Integer.parseInt(actionCommand);
+        
+        switch (chosenBody) {
+            case 0:
+                ui.player.numMartialBody = 0;
+                
+                ui.gameTextArea.setText("You have chosen " + ui.player.martialBody[ui.player.numMartialBody]);
+                break;
+            case 1:
+                ui.player.numMartialBody = 1;
+                
+                ui.gameTextArea.setText("You have chosen " + ui.player.martialBody[ui.player.numMartialBody]);
+                break;
+            case 2:
+                ui.player.numMartialBody = 2;
+                
+                ui.gameTextArea.setText("You have chosen " + ui.player.martialBody[ui.player.numMartialBody]);
+                break;
+            case 3:
+                ui.player.numMartialBody = 3;
+                
+                ui.gameTextArea.setText("You have chosen " + ui.player.martialBody[ui.player.numMartialBody]);
+                break;
+            default:
+                break;
+        }
+        //actions       
+        ui.buttonEditor(ui.action1, ">", ev -> ui.gameGUI());
+                
+        ui.buttonEditor(ui.action2, "", null);
+                
+        ui.buttonEditor(ui.action3, "", null);
+                
+        ui.buttonEditor(ui.action4, "", null);
+    }
+}

@@ -134,7 +134,8 @@ public class GameLocation {
     public void locationDescription() 
     {
         
-        switch (GameMechanic.location) {
+        switch (GameMechanic.location) 
+        {
             case 0:
                 
                 ui.gameTextArea.setText("This is the Demonic Barracks. ");
@@ -152,7 +153,7 @@ public class GameLocation {
                 
                 ui.gameTextArea.setText("");
                 
-                ui.buttonEditor(ui.action1, "", null);
+                ui.buttonEditor(ui.action1, "<", null);
                 
                 ui.buttonEditor(ui.action2, "", null);
                 
@@ -165,7 +166,7 @@ public class GameLocation {
                 
                 ui.gameTextArea.setText("");
                 
-                ui.buttonEditor(ui.action1, "", null);
+                ui.buttonEditor(ui.action1, "<", null);
                 
                 ui.buttonEditor(ui.action2, "", null);
                 
@@ -178,7 +179,7 @@ public class GameLocation {
                 
                 ui.gameTextArea.setText("");
                 
-                ui.buttonEditor(ui.action1, "", null);
+                ui.buttonEditor(ui.action1, "<", null);
                 
                 ui.buttonEditor(ui.action2, "", null);
                 
@@ -191,7 +192,7 @@ public class GameLocation {
                 
                 ui.gameTextArea.setText("");
                 
-                ui.buttonEditor(ui.action1, "", null);
+                ui.buttonEditor(ui.action1, "<", null);
                 
                 ui.buttonEditor(ui.action2, "", null);
                 

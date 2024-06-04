@@ -49,20 +49,34 @@ public class PlayerWindow {
         qiPanel.add(qiLabel);
         
         //martial skill display
-         String martialArtText = (ui.player.getMartialSkill() != null && ui.player.getMartialSkill().length > 0)
-                                ? ui.player.getMartialSkill()[0]
-                                : "None";
-        martialPanel = ui.createPanel(0, 300, 300, 40, Color.BLACK);
-        martialLabel = ui.createLabel("[Martial Art] " + martialArtText, ui.gameFont, Color.WHITE);
-        martialPanel.add(martialLabel);
+        if(ui.player.numMartialSkill > 0) 
+        {   
+            String martialArtText = (ui.player.getMartialSkill() != null && ui.player.getMartialSkill().length > 0)
+                                    ? ui.player.getMartialSkill()[0]
+                                    : "None";
+            martialPanel = ui.createPanel(0, 300, 300, 40, Color.BLACK);
+            martialLabel = ui.createLabel("[Martial Art] " + martialArtText, ui.gameFont, Color.WHITE);
+            martialPanel.add(martialLabel);
+        } else {
+            martialPanel = ui.createPanel(0, 300, 300, 40, Color.BLACK);
+            martialLabel = ui.createLabel("[Martial Art] None", ui.gameFont, Color.WHITE);
+            martialPanel.add(martialLabel);
+        }
         
-        //martial body display
-        String martialBodyText = (ui.player.getMartialBody() != null && ui.player.getMartialBody().length > 0)
-                                ? ui.player.getMartialBody()[0]
-                                : "None";
-        martialBodyPanel = ui.createPanel(0, 400, 300, 40, Color.BLACK);
-        martialBodyLabel = ui.createLabel("[Martial Body] " + martialBodyText, ui.gameFont, Color.WHITE);
-        martialBodyPanel.add(martialBodyLabel);
+        if(ui.player.numMartialBody > 0) 
+        {
+            //martial body display
+            String martialBodyText = (ui.player.getMartialBody() != null && ui.player.getMartialBody().length > 0)
+                                    ? ui.player.getMartialBody()[0]
+                                    : "None";
+            martialBodyPanel = ui.createPanel(0, 400, 300, 40, Color.BLACK);
+            martialBodyLabel = ui.createLabel("[Martial Body] " + martialBodyText, ui.gameFont, Color.WHITE);
+            martialBodyPanel.add(martialBodyLabel);
+        } else {
+            martialBodyPanel = ui.createPanel(0, 400, 300, 40, Color.BLACK);
+            martialBodyLabel = ui.createLabel("[Martial Body] None", ui.gameFont, Color.WHITE);
+            martialBodyPanel.add(martialBodyLabel);
+        }
         
         //gold display
         goldPanel = ui.createPanel(400, 100, 100, 40, Color.BLACK);
