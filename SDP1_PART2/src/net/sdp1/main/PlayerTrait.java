@@ -14,17 +14,19 @@ public class PlayerTrait
     
     public void martialScroll() 
     {
+        ui.playerWindowButton.setVisible(false);
+        ui.saveButton.setVisible(false);
         //game text
         ui.gameTextArea.setText("Choose your trait");
         
         //actions
         ui.buttonEditor(ui.action1, "Luminous Star Sword", e -> chosenSkill(e, "0"));
             
-        ui.buttonEditor(ui.action2, "Supreme Sky Demon Void Sword Art", e -> chosenSkill(e, "1"));
+        ui.buttonEditor(ui.action2, "Supreme Demon Sword Art", e -> chosenSkill(e, "1"));
             
         ui.buttonEditor(ui.action3, "Extreme Art of the Blade God", e -> chosenSkill(e, "2"));
             
-        ui.buttonEditor(ui.action4, "Sword Fore of the Heavenly Demon", e -> chosenSkill(e, "3"));
+        ui.buttonEditor(ui.action4, "Sword Art of the Heavenly Demon", e -> chosenSkill(e, "3"));
     }
     
     public void martialScrollBody() 
@@ -69,6 +71,7 @@ public class PlayerTrait
             default:
                 break;
         }
+        
         //actions       
         ui.buttonEditor(ui.action1, ">", ev -> martialScrollBody());
                 
@@ -108,6 +111,7 @@ public class PlayerTrait
             default:
                 break;
         }
+        
         //actions       
         ui.buttonEditor(ui.action1, ">", ev -> ui.gameGUI());
                 

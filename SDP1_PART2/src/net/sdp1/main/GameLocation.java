@@ -138,7 +138,7 @@ public class GameLocation {
         {
             case 0:
                 
-                ui.gameTextArea.setText("This is the Demonic Barracks. ");
+                ui.gameTextArea.setText("This is the Demonic Barracks.\n\nThe demon soldiers stand in a line underneath the hot sun.");
                 
                 ui.buttonEditor(ui.action1, "<", e -> ui.gameGUI());
                 

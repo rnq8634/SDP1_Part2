@@ -23,9 +23,9 @@ public class Player extends Character implements Serializable
     public String[] martialSkill = 
     {
         "Luminous Star Sword", 
-        "Supreme Sky Demon Void Sword Art", 
+        "Supreme Demon Sword Art", 
         "Extreme Art of the Blade God", 
-        "Sword Force of the Heavenly Demon"};
+        "Sword Art of the Heavenly Demon"};
     public String[] martialBody = 
     {
         "Cool Blood Blockage", 
