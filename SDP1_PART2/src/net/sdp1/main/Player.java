@@ -95,45 +95,6 @@ public class Player extends Character implements Serializable
         
     }
     
-    //taking a rest
-    public static void recover() 
-    {
-        Print.emptySpace();
-        if(player.recoverRemaining >= 1) 
-        {
-            System.out.println("Do you want to recover?");
-            System.out.println("[RECOVER] " + player.recoverRemaining);
-            
-            System.out.println("[1] Yes, my body's beat...\n[2] No, I'm brimming with QI!!!");
-            
-            int input = Print.userInput("-> ", 2);
-            if(input == 1) 
-            {
-                //player takes a rest
-                Print.emptySpace();
-                if(player.health < player.maxHealth) 
-                {
-                    int hpRestored = (int) (Math.random() * (player.qi/4 + 2) + 10);
-                    player.health += hpRestored;
-                    if(player.health > player.maxHealth)
-                        player.health = player.maxHealth;
-                    
-                    System.out.println("You did Restorative Breathing and regained "+ hpRestored + " health.");
-                    
-                    System.out.println("You're now at " + player.health + "/" + player.maxHealth + " health.");
-                    
-                    player.recoverRemaining--;
-                }else if(player.health == player.maxHealth) 
-                {
-                    System.out.println("There is no reason to rest since you are at full health!");
-                }
-            }else 
-            {
-                System.out.println("You felt that there is no reason to rest.");
-            }
-        }
-    }
-    
     //method to let the player choose their path
     public void martialScroll() 
     {

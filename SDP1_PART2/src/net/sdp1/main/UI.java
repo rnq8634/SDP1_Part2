@@ -26,10 +26,13 @@ public class UI
     public JTextField nameField;
     
     //class reference
+    public GameLocation gameLocation;
     public Player player;
-    private PlayerWindow playerWindow;
-    private UIManager uiManager;
+    public PlayerWindow playerWindow;
+    //public UIManager uiManager;
     public GameMechanic gameMechanic;
+    public Combat combat;
+    public PlayerRecover playerRecover;
     
     public final Font titleFont = new Font("Times New Roman", Font.PLAIN, 50);
     public final Font gameFont = new Font("Times New Roman", Font.PLAIN, 20);
@@ -38,8 +41,12 @@ public class UI
     {
         SwingUtilities.invokeLater(this::createAndShowUI);
         playerWindow = new PlayerWindow(this);
-        uiManager = new UIManager(this);
+        //uiManager = new UIManager(this);
         gameMechanic = new GameMechanic(this);
+        gameLocation = new GameLocation(this);
+        combat = new Combat(this);
+        playerRecover = new PlayerRecover(this);
+        
     }
     
     //creates the window
@@ -204,91 +211,25 @@ public class UI
         //calls game location
         switch (GameMechanic.location) {
             case 0:
-                firstArea();
+                gameLocation.firstArea();
                 break;
             case 1:
-                secondArea();
+                gameLocation.secondArea();
                 break;
             case 2:
-                thirdArea();
+                gameLocation.thirdArea();
                 break;
             case 3:
-                fourthArea();
+                gameLocation.fourthArea();
                 break;
             default:
-                firstArea();
+                gameLocation.firstArea();
                 break;
         }
         
         // screen refresh
         screen.revalidate();
         screen.repaint();
-    }
-    
-    //game locations(will be changed later)
-    public void firstArea() {
-        //player location
-        GameMechanic.location = 0;
-        
-        gameTextArea.setText("You are currently at " + GameMechanic.locations[GameMechanic.location] + "\n \nWhat do you plan to do?");
-        
-        //actions
-        buttonEditor(action1, "Attend your first mission", e -> secondArea());
-        
-        buttonEditor(action2, "Go and fight", e -> titleScreen());
-        
-        buttonEditor(action3, "Listen for rumors", e -> titleScreen());
-        
-        buttonEditor(action4, "", null);
-    }
-    
-    public void secondArea() {
-        //player location
-        
-        GameMechanic.location = 1;
-        
-        gameTextArea.setText("You are currently at " + GameMechanic.locations[GameMechanic.location] + "\n \nWhat do you plan to do?");
-        
-        //actions
-        buttonEditor(action1, "Attend your second mission", e -> thirdArea());
-        
-        buttonEditor(action2, "Go and fight", null);
-        
-        buttonEditor(action3, "", null);
-        
-        buttonEditor(action4, "", null);
-    }
-    
-    public void thirdArea() {
-        //player location
-        GameMechanic.location = 2;
-        
-        gameTextArea.setText("You are currently at " + GameMechanic.locations[GameMechanic.location] + "\n \nWhat do you plan to do?");
-        
-        //actions
-        buttonEditor(action1, "Head to the final area", e -> fourthArea());
-        
-        buttonEditor(action2, "Go and fight", null);
-        
-        buttonEditor(action3, "", null);
-        
-        buttonEditor(action4, "", null);
-    }
-    
-    public void fourthArea() {
-        //player location
-        GameMechanic.location = 3;
-        
-        gameTextArea.setText("You are currently at " + GameMechanic.locations[GameMechanic.location] + "\n \nWhat do you plan to do?");
-        
-        //actions
-        buttonEditor(action1, "Face him...", null);
-        
-        buttonEditor(action2, "Go and fight", null);
-        
-        buttonEditor(action3, "", null);
-        
-        buttonEditor(action4, "", null);
     }
     
     // helper method for creating panels
