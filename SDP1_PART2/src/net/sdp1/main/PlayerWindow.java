@@ -97,12 +97,12 @@ public class PlayerWindow {
         //martial body display
         switch (ui.player.numMartialBody) {
             case 0:
-                String martialBodyText = (ui.player.getMartialSkill() != null)
-                                        ? ui.player.getMartialSkill()[0]
+                String martialBodyText = (ui.player.getMartialBody() != null)
+                                        ? ui.player.getMartialBody()[0]
                                         : "None";
-                martialPanel = ui.createPanel(0, 400, 330, 40, Color.BLACK);
-                martialLabel = ui.createLabel("[Martial Art] " + martialBodyText, ui.gameFont, Color.WHITE);
-                martialPanel.add(martialLabel);
+                martialBodyPanel = ui.createPanel(0, 400, 330, 40, Color.BLACK);
+                martialBodyLabel = ui.createLabel("[Martial Body] " + martialBodyText, ui.gameFont, Color.WHITE);
+                martialBodyPanel.add(martialBodyLabel);
                 
                 break;
             case 1:

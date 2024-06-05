@@ -1,8 +1,12 @@
 package net.sdp1.main;
 
+import java.awt.Color;
+
 public class Combat {   
     //class reference
     public UI ui;
+    public Enemy enemy;
+    public PlayerDeath playerDeath;
     
     public Combat(UI ui) 
     {
@@ -11,15 +15,51 @@ public class Combat {
     
     //includes attack and death of enemy or player
     public void attack() {
+        // calculate dmg and dmgReceived (dmg enemy deals to player)
+        int atk = ui.player.attack() - enemy.defend();
+        int atkReceived = enemy.attack() - ui.player.defend();
         
+        //deal dmg to both
+        ui.player.health -= atkReceived;
+        enemy.health -= atk;
+        
+        //refresh player hp
+        refreshHP();
+        
+        //printing attack results
+        ui.gameTextArea.setText(enemy.name + " dealt " + atkReceived + " damage to you.");
+        
+        if (ui.player.health <= 0) 
+        {
+            ui.playerDeath.death();
+        } else if (enemy.health <= 0) {
+            
+            ui.player.qi += enemy.qi;
+            
+            ui.gameTextArea.setText("You have killed " + enemy.name);
+            
+            ui.gameGUI();
+        }
+        
+    }
+    
+    public void refreshHP() {
+        ui.hpLabel.setText("[HP] " + ui.player.getHealth());
+        
+        //refresh screen
+        ui.screen.revalidate();
+        ui.screen.repaint();
     }
     
     //player can half the damage they receive
     public void defend() {
         
+        //dodging
+        
     }
     
     public void battleSystem(Enemy enemy) {
+        this.enemy = enemy;
         
         //game text
         ui.gameTextArea.setText(enemy.name + " HP: " + enemy.health + "/" + enemy.maxHealth + "\n\nWhat will you do?");

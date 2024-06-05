@@ -48,17 +48,8 @@ public class Player extends Character implements Serializable
         this.title = "";
     }
     
-    //end results of game
-    /*public static void death() 
-    {
-        
-        System.out.println("You can feel your QI seeping away as you leave this world behind...");
-        System.out.println("You accumulated " + player.qi + " QI in this life. Try to earn more in the next!!!");
-        
-    }
-    
     //qi strengthening, increases max health
-    public void qiStrengthening() 
+    /*public void qiStrengthening() 
     {
         if(qi >= 20 && qi < 60 && maxHealth == 100) 
         {
@@ -112,6 +103,11 @@ public class Player extends Character implements Serializable
     public int getNumMartialSkill() 
     {
         return numMartialSkill;
+    }
+    
+    public int getQi() 
+    {
+        return qi;
     }
     
     public void setNumMartialSkill(int numMartialSkill) 
@@ -179,17 +175,31 @@ public class Player extends Character implements Serializable
         this.martialBody = martialBody;
     }
     
+    public int getMaxHealth() 
+    {
+        return maxHealth;
+    }
+    
+    public int getHealth() 
+    {
+        return health;
+    }
+    
     //player specific method
     @Override
     public int attack() 
     {
-        return (int) (Math.random() * (qi/4 + numMartialSkill * 3 + 3) + qi/10 + numMartialSkill * 2 + numMartialBody + 1);
+        int baseAttack = qi / 10 + numMartialSkill * 2 + numMartialBody + 1;
+        int randomModifier = (int) (Math.random() * (qi/ 10 + numMartialSkill));
+        return Math.max(1, baseAttack + randomModifier);
     }
     
     @Override
     public int defend() 
     {
-        return (int) (Math.random() * (qi/4 + numMartialBody * 3 + 3) + qi/10 + numMartialBody * 2 + numMartialSkill + 1);
+        int baseDefense = qi / 10 + numMartialSkill * 2 + numMartialBody + 1;
+        int randomModifier = (int) (Math.random() * (qi/ 10 + numMartialSkill));
+        return Math.max(1, baseDefense + randomModifier);
     }
     
     //loading 

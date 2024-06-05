@@ -29,12 +29,13 @@ public class UI
     public GameLocation gameLocation;
     public Player player;
     public PlayerWindow playerWindow;
-    //public UIManager uiManager;
     public GameMechanic gameMechanic;
     public Combat combat;
     public PlayerRecover playerRecover;
     public PlayerTrait playerTrait;
     public Random random;
+    public Enemy enemy;
+    public PlayerDeath playerDeath;
     
     public final Font titleFont = new Font("Times New Roman", Font.PLAIN, 50);
     public final Font gameFont = new Font("Times New Roman", Font.PLAIN, 20);
@@ -43,13 +44,13 @@ public class UI
     {
         SwingUtilities.invokeLater(this::createAndShowUI);
         playerWindow = new PlayerWindow(this);
-        //uiManager = new UIManager(this);
         gameMechanic = new GameMechanic(this);
         gameLocation = new GameLocation(this);
         combat = new Combat(this);
         playerRecover = new PlayerRecover(this);
         playerTrait = new PlayerTrait(this);
         random = new Random(this);
+        playerDeath = new PlayerDeath(this);
     }
     
     //creates the window
@@ -148,10 +149,10 @@ public class UI
         actionMenuPanel.setLayout(new GridLayout(4, 1));
         
         //  displays action buttons
-        action1 = createButton("Action 1", e -> performAction(1));
-        action2 = createButton("Action 2", e -> performAction(2));
-        action3 = createButton("Action 3", e -> performAction(3));
-        action4 = createButton("Action 4", e -> performAction(4));
+        action1 = createButton("Action 1", null);
+        action2 = createButton("Action 2", null);
+        action3 = createButton("Action 3", null);
+        action4 = createButton("Action 4", null);
         
         action1.setActionCommand("0");
         action2.setActionCommand("1");
@@ -190,24 +191,6 @@ public class UI
         //health display
         hpLabel = createLabel("[HP] " + player.getHealth(), gameFont, Color.WHITE);
         playerPanel.add(hpLabel);
-        
-        //converts String[] to string
-        /*String martialBodyText = (player.getMartialBody() != null && player.getMartialBody().length > 0)
-                                ? player.getMartialBody()[0]
-                                : "None";
-        
-        //displayer for martial body
-        martialBodyLabel = createLabel("[Martial Body] " + martialBodyText, gameFont, Color.WHITE);
-        playerPanel.add(martialBodyLabel);
-        
-        //converts String[] to string
-        String martialArtText = (player.getMartialSkill() != null && player.getMartialSkill().length > 0)
-                                ? player.getMartialSkill()[0]
-                                : "None";
-        
-        //martial art display
-        martialLabel = createLabel("[Martial Art] " + martialArtText, gameFont, Color.WHITE);
-        playerPanel.add(martialLabel);*/
         
         //shows on the screen
         screen.add(playerWindowPanel);
@@ -311,10 +294,6 @@ public class UI
         return textArea;
     }
    
-    // method for button action/choices
-    public void performAction(int actionNumber) 
-    {
-        
-    }
+    
     
 }

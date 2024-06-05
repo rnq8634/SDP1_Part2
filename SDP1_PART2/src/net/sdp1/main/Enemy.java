@@ -6,6 +6,9 @@ public class Enemy extends Character
     //variables to store the players current xp
     int playerQi;
     
+    //class ref
+    public UI ui;
+    
     //enemy specific constructor
     public Enemy(String name, int playerQi) 
     {
