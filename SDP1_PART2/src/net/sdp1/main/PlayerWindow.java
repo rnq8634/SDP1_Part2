@@ -9,7 +9,6 @@ public class PlayerWindow {
    
    // class reference
    private UI ui;
-   private UIManager uiManager;
    
    private JButton backToGameButton;
    private JPanel backToGameButtonPanel, qiPanel, goldPanel, elixirPanel, characterInfoPanel, realmPanel, combatPowerPanel, playerNamePanel, martialPanel, martialBodyPanel;

@@ -76,9 +76,9 @@ public class GameLocation {
             ui.gameTextArea.setText("You are currently at " + GameMechanic.locations[GameMechanic.location] + "\n \nWhat do you plan to do?");
             
             //actions
-            ui.buttonEditor(ui.action1, "Head up the tall mountains", e -> thirdArea());
+            ui.buttonEditor(ui.action1, "Head up the tall mountains", e -> fourthArea());
             
-            ui.buttonEditor(ui.action2, "Go and fight", null);
+            ui.buttonEditor(ui.action2, "Go and fight", e -> ui.random.randomNameEnemy());
             
             ui.buttonEditor(ui.action3, "Explore the area", e -> locationDescription());//encounter shops or description of the area
             
@@ -110,9 +110,9 @@ public class GameLocation {
             ui.gameTextArea.setText("You are currently at " + GameMechanic.locations[GameMechanic.location] + "\n \nWhat do you plan to do?");
             
             //actions
-            ui.buttonEditor(ui.action1, "Face him...", e -> thirdArea());
+            ui.buttonEditor(ui.action1, "Face him...", null);//boss fight
             
-            ui.buttonEditor(ui.action2, "Go and fight", null);
+            ui.buttonEditor(ui.action2, "Go and fight", e -> random.randomNameEnemy());
             
             ui.buttonEditor(ui.action3, "Explore the area", e -> locationDescription());//encounter shops or description of the area
             
@@ -132,6 +132,12 @@ public class GameLocation {
         }
     }
     
+    //martial scroll
+    
+    //martial scroll body
+    
+    //talk instructor
+    
     //add location descriptions
     public void locationDescription() 
     {
@@ -148,29 +154,29 @@ public class GameLocation {
                 
                 ui.buttonEditor(ui.action3, "", null);
                 
-                ui.buttonEditor(ui.action4, "", null);
+                ui.buttonEditor(ui.action4, "Hidden Box", null);
                 
                 break;
             case 1:
                 
                 ui.gameTextArea.setText("");
                 
-                ui.buttonEditor(ui.action1, "<", null);
+                ui.buttonEditor(ui.action1, "<", e -> ui.gameGUI());
                 
                 ui.buttonEditor(ui.action2, "", null);
                 
                 ui.buttonEditor(ui.action3, "", null);
                 
-                ui.buttonEditor(ui.action4, "", null);
+                ui.buttonEditor(ui.action4, "Hidden Box", null);
                 
                 break;
             case 2:
                 
                 ui.gameTextArea.setText("");
                 
-                ui.buttonEditor(ui.action1, "<", null);
+                ui.buttonEditor(ui.action1, "<", e -> ui.gameGUI());
                 
-                ui.buttonEditor(ui.action2, "", null);
+                ui.buttonEditor(ui.action2, "Hidden Box", null);
                 
                 ui.buttonEditor(ui.action3, "", null);
                 
@@ -181,24 +187,11 @@ public class GameLocation {
                 
                 ui.gameTextArea.setText("");
                 
-                ui.buttonEditor(ui.action1, "<", null);
+                ui.buttonEditor(ui.action1, "<", e -> ui.gameGUI());
                 
                 ui.buttonEditor(ui.action2, "", null);
                 
-                ui.buttonEditor(ui.action3, "", null);
-                
-                ui.buttonEditor(ui.action4, "", null);
-                
-                break;
-            case 4:
-                
-                ui.gameTextArea.setText("");
-                
-                ui.buttonEditor(ui.action1, "<", null);
-                
-                ui.buttonEditor(ui.action2, "", null);
-                
-                ui.buttonEditor(ui.action3, "", null);
+                ui.buttonEditor(ui.action3, "Hidden Box", null);
                 
                 ui.buttonEditor(ui.action4, "", null);
                 

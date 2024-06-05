@@ -189,17 +189,13 @@ public class Player extends Character implements Serializable
     @Override
     public int attack() 
     {
-        int baseAttack = qi / 10 + numMartialSkill * 2 + numMartialBody + 1;
-        int randomModifier = (int) (Math.random() * (qi/ 10 + numMartialSkill));
-        return Math.max(1, baseAttack + randomModifier);
+        return (int) (Math.random() * (qi/4 + numMartialSkill * 3 + 3) + qi/10 + numMartialSkill * 2 + numMartialBody + 1);
     }
     
     @Override
     public int defend() 
     {
-        int baseDefense = qi / 10 + numMartialSkill * 2 + numMartialBody + 1;
-        int randomModifier = (int) (Math.random() * (qi/ 10 + numMartialSkill));
-        return Math.max(1, baseDefense + randomModifier);
+        return (int) (Math.random() * (qi/4 + numMartialBody * 3 + 3) + qi/10 + numMartialBody * 2 + numMartialSkill + 1);
     }
     
     //loading 

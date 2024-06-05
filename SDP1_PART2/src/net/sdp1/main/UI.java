@@ -34,7 +34,6 @@ public class UI
     public PlayerRecover playerRecover;
     public PlayerTrait playerTrait;
     public Random random;
-    public Enemy enemy;
     public PlayerDeath playerDeath;
     
     public final Font titleFont = new Font("Times New Roman", Font.PLAIN, 50);
@@ -46,11 +45,10 @@ public class UI
         playerWindow = new PlayerWindow(this);
         gameMechanic = new GameMechanic(this);
         gameLocation = new GameLocation(this);
-        combat = new Combat(this);
+        combat = new Combat(this, playerDeath);
         playerRecover = new PlayerRecover(this);
         playerTrait = new PlayerTrait(this);
         random = new Random(this);
-        playerDeath = new PlayerDeath(this);
     }
     
     //creates the window
