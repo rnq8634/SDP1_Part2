@@ -34,6 +34,7 @@ public class UI
     public Combat combat;
     public PlayerRecover playerRecover;
     public PlayerTrait playerTrait;
+    public Random random;
     
     public final Font titleFont = new Font("Times New Roman", Font.PLAIN, 50);
     public final Font gameFont = new Font("Times New Roman", Font.PLAIN, 20);
@@ -48,6 +49,7 @@ public class UI
         combat = new Combat(this);
         playerRecover = new PlayerRecover(this);
         playerTrait = new PlayerTrait(this);
+        random = new Random(this);
     }
     
     //creates the window

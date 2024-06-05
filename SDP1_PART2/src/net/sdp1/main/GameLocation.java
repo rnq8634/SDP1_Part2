@@ -6,6 +6,8 @@ public class GameLocation {
     public GameMechanic gameMechanic;
     public UI ui;
     public PlayerRecover playerRecover;
+    public Combat combat;
+    public Random random;
     
     public GameLocation(UI ui) {
         this.ui = ui;
@@ -21,7 +23,7 @@ public class GameLocation {
         //actions
         ui.buttonEditor(ui.action1, "Attend your first mission", e -> secondArea());
         
-        ui.buttonEditor(ui.action2, "Go and fight", null);
+        ui.buttonEditor(ui.action2, "Go and fight", e -> ui.random.randomNameEnemy());
         
         ui.buttonEditor(ui.action3, "Explore the area", e -> locationDescription());
         
@@ -42,7 +44,7 @@ public class GameLocation {
             //actions
             ui.buttonEditor(ui.action1, "Attend your second mission", e -> thirdArea());
             
-            ui.buttonEditor(ui.action2, "Go and fight", null);
+            ui.buttonEditor(ui.action2, "Go and fight", e -> random.randomNameEnemy());
             
             ui.buttonEditor(ui.action3, "Explore the area", e -> locationDescription());//encounter shops or description of the area
             

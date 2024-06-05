@@ -46,45 +46,7 @@ public class Player extends Character implements Serializable
         this.recoverRemaining = 1;
         this.elix = 0;
         this.title = "";
-        
-        // let the player choose a trait when starting a first playthrough
-        //martialScroll();
     }
-    
-    //character stats
-    // INFO
-    /*public static void characterInfo() 
-    {
-        
-        Print.center("[CHARACTER INFO]", 30);
-        
-        System.out.println("[" + player.name + "] " + " [HEALTH] " + player.health + "/" + player.maxHealth);
-        player.realm();
-        player.combatPower();
-        
-        //player qi and gold
-        System.out.println("[QI ACCUMULATED] " + player.qi + " [GOLD] " + player.gold);
-        
-        // number of potions
-        System.out.println("[POUCH]");
-        System.out.println("[Elixir(s) Held] " + player.elix);
-        
-        //chosen traits
-        if(player.numMartialSkill > 0) 
-        {
-            Print.separator(45);
-            System.out.println("[Martial Art] " + player.martialSkill[player.numMartialSkill - 1]);
-            Print.separator(45);
-        }
-        if(player.numMartialBody > 0) 
-        {
-            Print.separator(45);
-            System.out.println("[Martial Body] " + player.martialBody[player.numMartialBody - 1]);
-            Print.separator(45);
-        }
-        player.qiStrengthening();
-        
-    }*/
     
     //end results of game
     /*public static void death() 
