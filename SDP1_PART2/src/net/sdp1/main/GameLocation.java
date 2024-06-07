@@ -200,7 +200,6 @@ public class GameLocation
                 break;
             default:
                 break;
-            
         }
     }
     
@@ -264,7 +263,5 @@ public class GameLocation
             default:
                 break;
         }
-        
     }
-    
 }
