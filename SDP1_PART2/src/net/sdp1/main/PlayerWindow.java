@@ -5,7 +5,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class PlayerWindow {
+public class PlayerWindow 
+{
    
    // class reference
    private UI ui;
@@ -14,11 +15,13 @@ public class PlayerWindow {
    private JPanel backToGameButtonPanel, qiPanel, goldPanel, elixirPanel, characterInfoPanel, realmPanel, combatPowerPanel, playerNamePanel, martialPanel, martialBodyPanel;
    private JLabel qiLabel, goldLabel, elixirLabel, characterInfoLabel, realmLabel, combatPowerLabel, playerNameLabel, martialLabel, martialBodyLabel;
     
-    public PlayerWindow(UI ui) {
+    public PlayerWindow(UI ui) 
+    {
         this.ui = ui;
     }
     
-    public void playerWindowUI() {
+    public void playerWindowUI() 
+    {
         ui.clearScreen();
         
         //character info display(says character info)
@@ -48,7 +51,8 @@ public class PlayerWindow {
         qiPanel.add(qiLabel);
         
         //martial skill display
-        switch (ui.player.numMartialSkill) {
+        switch (ui.player.numMartialSkill) 
+        {
             case 0:
                 String martialArtText = (ui.player.getMartialSkill() != null)
                                         ? ui.player.getMartialSkill()[0]
@@ -94,7 +98,8 @@ public class PlayerWindow {
         }
         
         //martial body display
-        switch (ui.player.numMartialBody) {
+        switch (ui.player.numMartialBody) 
+        {
             case 0:
                 String martialBodyText = (ui.player.getMartialBody() != null)
                                         ? ui.player.getMartialBody()[0]

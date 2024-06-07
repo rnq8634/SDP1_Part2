@@ -45,10 +45,12 @@ public class PlayerTrait
         ui.buttonEditor(ui.action4, "Heavenly Body", e -> chosenBody(e, "3"));
     }
     
-    public void chosenSkill(ActionEvent e, String actionCommand) {
+    public void chosenSkill(ActionEvent e, String actionCommand) 
+    {
         int chosenSkill = Integer.parseInt(actionCommand);
         
-        switch (chosenSkill) {
+        switch (chosenSkill) 
+        {
             case 0://Luminous Star Sword
                 ui.player.numMartialSkill = 0;
                 
@@ -64,17 +66,20 @@ public class PlayerTrait
                     ui.player.numMartialSkill = 2;
                 
                     ui.gameTextArea.setText("You have chosen " + ui.player.martialSkill[ui.player.numMartialSkill]);
-                } else {
+                } else 
+                {
                     JOptionPane.showMessageDialog(ui.screen, "Your QI is too low for this skill!");
                     return;
                 }
                 break;
             case 3://Sword Art of the Heavenly Demon
-                if(ui.player.getQi() > 200) {
+                if(ui.player.getQi() > 200) 
+                {
                     ui.player.numMartialSkill = 3;
                 
                     ui.gameTextArea.setText("You have chosen " + ui.player.martialSkill[ui.player.numMartialSkill]);
-                } else {
+                } else 
+                {
                     JOptionPane.showMessageDialog(ui.screen, "You must first learn the art of the Heavenly Demon!");
                     return;
                 }
@@ -94,11 +99,13 @@ public class PlayerTrait
         
     }
     
-    public void chosenBody(ActionEvent e, String actionCommand) {
+    public void chosenBody(ActionEvent e, String actionCommand) 
+    {
         
         int chosenBody = Integer.parseInt(actionCommand);
         
-        switch (chosenBody) {
+        switch (chosenBody) 
+        {
             case 0://Cool Blood Blockage
                 ui.player.numMartialBody = 0;
                 
