@@ -117,14 +117,27 @@ public class PlayerTrait
                 ui.gameTextArea.setText("You have chosen " + ui.player.martialBody[ui.player.numMartialBody]);
                 break;
             case 2://Heavenly Killing Star
-                ui.player.numMartialBody = 2;
+                if(ui.player.getQi() > 100) {
+                    ui.player.numMartialBody = 2;
                 
-                ui.gameTextArea.setText("You have chosen " + ui.player.martialBody[ui.player.numMartialBody]);
+                    ui.gameTextArea.setText("You have chosen " + ui.player.martialSkill[ui.player.numMartialSkill]);
+                } else 
+                {
+                    JOptionPane.showMessageDialog(ui.screen, "Your QI is too low for this skill!");
+                    return;
+                }
                 break;
             case 3://Heavenly Body
-                ui.player.numMartialBody = 3;
+                if(ui.player.getQi() > 200) 
+                {
+                    ui.player.numMartialBody = 3;
                 
-                ui.gameTextArea.setText("You have chosen " + ui.player.martialBody[ui.player.numMartialBody]);
+                    ui.gameTextArea.setText("You have chosen " + ui.player.martialSkill[ui.player.numMartialSkill]);
+                } else 
+                {
+                    JOptionPane.showMessageDialog(ui.screen, "You must first learn the art of the Heavenly Demon!");
+                    return;
+                }
                 break;
             default:
                 break;
