@@ -18,7 +18,7 @@ public class PlayerTrait
         ui.playerWindowButton.setVisible(false);
         ui.saveButton.setVisible(false);
         //game text
-        ui.gameTextArea.setText("Choose your trait");
+        ui.gameTextArea.setText("Choose your sword skill");
         
         //actions
         ui.buttonEditor(ui.action1, "Luminous Star Sword", e -> chosenSkill(e, "0"));
@@ -33,7 +33,7 @@ public class PlayerTrait
     public void martialScrollBody() 
     {
         //game text
-        ui.gameTextArea.setText("Choose your trait");
+        ui.gameTextArea.setText("Choose your body trait");
         
         //actions
         ui.buttonEditor(ui.action1, "Cool Blood Blockage", e -> chosenBody(e, "0"));
@@ -123,7 +123,7 @@ public class PlayerTrait
                     ui.gameTextArea.setText("You have chosen " + ui.player.martialSkill[ui.player.numMartialSkill]);
                 } else 
                 {
-                    JOptionPane.showMessageDialog(ui.screen, "Your QI is too low for this skill!");
+                    JOptionPane.showMessageDialog(ui.screen, "Your body is too fragile for this!");
                     return;
                 }
                 break;
