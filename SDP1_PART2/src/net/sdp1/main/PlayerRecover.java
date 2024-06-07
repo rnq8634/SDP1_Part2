@@ -1,14 +1,17 @@
 package net.sdp1.main;
 
-public class PlayerRecover {
+public class PlayerRecover 
+{
     
     public UI ui;
     
-    public PlayerRecover(UI ui) {
+    public PlayerRecover(UI ui) 
+    {
         this.ui = ui;
     }
     
-    public void recover() {
+    public void recover() 
+    {
         
         ui.gameTextArea.setText("Do you want to recover? \n\n[RECOVER] " + ui.player.recoverRemaining);
         
