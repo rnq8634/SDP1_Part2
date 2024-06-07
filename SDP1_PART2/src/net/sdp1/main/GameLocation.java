@@ -141,10 +141,72 @@ public class GameLocation
     
     //talk instructor
     
+    public void scenery() 
+    {
+        switch (GameMechanic.location) {
+            
+            case 0://Demon Cult Barracks: West Wing
+                
+                ui.gameTextArea.setText("The Demon Cult Barracks: West Wing is a sinister stronghold known for its harsh training and brutal initiation rites, where the cult's elite warriors hone their skills."
+                        + "\n\n" + "Dimly lit corridors, adorned with ancient relics and echoing with combat training, create an oppressive atmosphere filled with both danger and dark secrets.");
+        
+                ui.buttonEditor(ui.action1, "<", e -> locationDescription());
+                
+                ui.buttonEditor(ui.action2, "", null);
+                
+                ui.buttonEditor(ui.action3, "", null);
+                
+                ui.buttonEditor(ui.action4, "", null);
+                
+                break;
+            case 1://West Jiang-Hu
+                
+                ui.gameTextArea.setText("");
+        
+                ui.buttonEditor(ui.action1, "<", e -> locationDescription());
+                
+                ui.buttonEditor(ui.action2, "", null);
+                
+                ui.buttonEditor(ui.action3, "", null);
+                
+                ui.buttonEditor(ui.action4, "", null);
+                
+                break;
+            case 2://Huangshan Mountain
+                
+                ui.gameTextArea.setText("");
+        
+                ui.buttonEditor(ui.action1, "<", e -> locationDescription());
+                
+                ui.buttonEditor(ui.action2, "", null);
+                
+                ui.buttonEditor(ui.action3, "", null);
+                
+                ui.buttonEditor(ui.action4, "", null);
+                
+                break;
+            case 3://Ten Thousand Mountains
+                
+                ui.gameTextArea.setText("");
+        
+                ui.buttonEditor(ui.action1, "<", e -> locationDescription());
+                
+                ui.buttonEditor(ui.action2, "", null);
+                
+                ui.buttonEditor(ui.action3, "", null);
+                
+                ui.buttonEditor(ui.action4, "", null);
+                
+                break;
+            default:
+                break;
+            
+        }
+    }
+    
     //add location descriptions
     public void locationDescription() 
     {
-        
         switch (GameMechanic.location) 
         {
             case 0://Demon Cult Barracks: West Wing
@@ -155,7 +217,7 @@ public class GameLocation
                 
                 ui.buttonEditor(ui.action2, "Talk to the instructor", null);
                 
-                ui.buttonEditor(ui.action3, "", null);
+                ui.buttonEditor(ui.action3, "Explore the Scenery", e -> scenery());
                 
                 ui.buttonEditor(ui.action4, "Hidden Box", null);
                 
