@@ -291,7 +291,4 @@ public class UI
         textArea.setWrapStyleWord(lineWrap);
         return textArea;
     }
-   
-    
-    
 }
