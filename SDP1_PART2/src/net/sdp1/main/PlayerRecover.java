@@ -16,7 +16,7 @@ public class PlayerRecover
         ui.gameTextArea.setText("Do you want to recover? \n\n[RECOVER] " + ui.player.recoverRemaining);
         
         //choices
-        ui.buttonEditor(ui.action1, "Yes, my body's beat...", null);
+        ui.buttonEditor(ui.action1, "Yes, my body's beat...", e -> recoverHealth());
         
         ui.buttonEditor(ui.action2, "No, I'm brimming with QI!!!", e -> ui.gameGUI());
         
