@@ -141,6 +141,20 @@ public class GameLocation
     
     //talk instructor
     
+    public void talkInstructor()
+    {
+        ui.gameTextArea.setText("Endure the pain, for only the strongest survive the trials of the West Wing."
+                + "\n\n" + "Prove your worth or perish, as weakness has no place among the elite warriors of the Demon Cult");
+                
+        ui.buttonEditor(ui.action1, "<", e -> ui.gameGUI());
+
+        ui.buttonEditor(ui.action2, "", null);
+
+        ui.buttonEditor(ui.action3, "", null);
+
+        ui.buttonEditor(ui.action4, "Hidden Box", null);
+    }
+    
     //add location descriptions
     public void locationDescription() 
     {
@@ -153,7 +167,7 @@ public class GameLocation
                 
                 ui.buttonEditor(ui.action1, "<", e -> ui.gameGUI());
                 
-                ui.buttonEditor(ui.action2, "Talk to the instructor", null);
+                ui.buttonEditor(ui.action2, "Talk to the instructor", e -> talkInstructor());
                 
                 ui.buttonEditor(ui.action3, "", null);
                 
