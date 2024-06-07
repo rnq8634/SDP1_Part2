@@ -1,10 +1,12 @@
 package net.sdp1.main;
 
-public class PlayerDeath {
+public class PlayerDeath 
+{
     
     public UI ui;
     
-    public PlayerDeath(UI ui) {
+    public PlayerDeath(UI ui) 
+    {
         this.ui = ui;
     }
     
