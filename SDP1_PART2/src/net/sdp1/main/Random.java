@@ -1,6 +1,7 @@
 package net.sdp1.main;
 
-public class Random {
+public class Random 
+{
     
     public Combat combat;
     public UI ui;
@@ -10,7 +11,8 @@ public class Random {
     //enemy names
     public String[] enemies = {"Corrupt Demon Cultist", "Low Demon Soldier", "Wandering Thug", "Crazed Bandit", "Orthodox Sect Member"};
     
-    public Random(UI ui) {
+    public Random(UI ui) 
+    {
         this.ui = ui;
     }
     
