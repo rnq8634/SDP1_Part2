@@ -1,6 +1,7 @@
 package net.sdp1.main;
 
-public class GameLocation {
+public class GameLocation 
+{
     
     //class reference
     public GameMechanic gameMechanic;
@@ -9,12 +10,14 @@ public class GameLocation {
     public Combat combat;
     public Random random;
     
-    public GameLocation(UI ui) {
+    public GameLocation(UI ui) 
+    {
         this.ui = ui;
     }
     
     //game locations(will be changed later)
-    public void firstArea() {
+    public void firstArea() 
+    {
         //player location
         GameMechanic.location = 0;
         
@@ -144,7 +147,7 @@ public class GameLocation {
         
         switch (GameMechanic.location) 
         {
-            case 0:
+            case 0://Demon Cult Barracks: West Wing
                 
                 ui.gameTextArea.setText("This is the Demonic Barracks.\n\nThe demon soldiers stand in a line underneath the hot sun.");
                 
@@ -157,7 +160,7 @@ public class GameLocation {
                 ui.buttonEditor(ui.action4, "Hidden Box", null);
                 
                 break;
-            case 1:
+            case 1://West Jiang-Hu
                 
                 ui.gameTextArea.setText("");
                 
@@ -170,7 +173,7 @@ public class GameLocation {
                 ui.buttonEditor(ui.action4, "Hidden Box", null);
                 
                 break;
-            case 2:
+            case 2://Huangshan Mountain
                 
                 ui.gameTextArea.setText("");
                 
@@ -183,7 +186,7 @@ public class GameLocation {
                 ui.buttonEditor(ui.action4, "", null);
                 
                 break;
-            case 3:
+            case 3://Ten Thousand Mountains
                 
                 ui.gameTextArea.setText("");
                 
