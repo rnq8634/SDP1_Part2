@@ -143,7 +143,8 @@ public class GameLocation
     
     public void scenery() 
     {
-        switch (GameMechanic.location) {
+        switch (GameMechanic.location) 
+        {
             
             case 0://Demon Cult Barracks: West Wing
                 
