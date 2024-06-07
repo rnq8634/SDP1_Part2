@@ -141,7 +141,6 @@ public class GameLocation
     
     //talk instructor
     
-
     public void talkInstructor()
     {
         ui.gameTextArea.setText("Endure the pain, for only the strongest survive the trials of the West Wing."
