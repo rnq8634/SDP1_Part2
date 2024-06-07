@@ -147,13 +147,13 @@ public class GameLocation
         ui.gameTextArea.setText("Endure the pain, for only the strongest survive the trials of the West Wing."
                 + "\n\n" + "Prove your worth or perish, as weakness has no place among the elite warriors of the Demon Cult");
                 
-        ui.buttonEditor(ui.action1, "<", e -> ui.gameGUI());
+        ui.buttonEditor(ui.action1, "<", e -> locationDescription());
 
         ui.buttonEditor(ui.action2, "", null);
 
         ui.buttonEditor(ui.action3, "", null);
 
-        ui.buttonEditor(ui.action4, "Hidden Box", null);
+        ui.buttonEditor(ui.action4, "", null);
     }
 
     public void scenery() 
